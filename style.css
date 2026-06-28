@@ -42,8 +42,8 @@ body, html {
 .carousel-track {
     display: flex;
     width: max-content;
-    animation: scroll 35s linear infinite; /* Nastaveno na 35s, protože máme více karet */
-    will-change: transform; /* Říká prohlížeči, ať si tohle dopředu vypočítá pro hladší chod */
+    animation: scroll 35s linear infinite; 
+    will-change: transform; 
 }
 
 .carousel-track:hover {
@@ -56,12 +56,12 @@ body, html {
     100% { transform: translateX(-50%); } 
 }
 
-/* Skupina 5 karet - Fixnuté hodnoty pro dokonalé napojení rotace */
+/* Skupina 5 karet */
 .slide-group {
     display: flex;
     gap: 50px; 
-    padding-right: 50px; /* Musí být přesně stejné jako gap! */
-    flex: 0 0 auto; /* Zabrání nechtěnému zmenšování uvnitř prohlížeče */
+    padding-right: 50px; 
+    flex: 0 0 auto; 
 }
 
 /* Jednotlivá karta */
@@ -81,7 +81,7 @@ body, html {
 .postapo { background-image: url('postapo.jpeg'); } 
 .cyber { background-image: url('cyber.jpeg'); }
 .frost { background-image: url('frost.jpeg'); }
-.hospoda { background-image: url('hospoda.jpeg'); } /* Nová karta pro hospodu */
+.hospoda { background-image: url('hospoda.jpeg'); } 
 
 /* ZÁKLADNÍ Napozicování pozadí na obličeje */
 .portal::before {
@@ -95,13 +95,21 @@ body, html {
     background: inherit; 
     background-size: cover; 
     background-repeat: no-repeat;
-    background-position: center 15%; 
+    background-position: center 15%; /* Základní pozice */
     transition: 0.5s;
 }
 
-/* ÚPRAVA POUZE PRO FROSTPUNK: Posunuto ještě o 15 % výš (z 45 na 60) */
+/* ÚPRAVY POZIC PRO KONKRÉTNÍ FOTKY (Posun nahoru) */
+.medival::before {
+    background-position: center 30%; /* Posun o 15 % nahoru ze základu */
+}
+
+.hospoda::before {
+    background-position: center 30%; /* Posun o 15 % nahoru ze základu */
+}
+
 .frost::before {
-    background-position: center 60%; 
+    background-position: center 60%; /* Extrémní posun u Frostpunku */
 }
 
 .portal:hover {
@@ -202,18 +210,17 @@ body, html {
     100% { transform: translateY(-40px) scale(1.3); opacity: 0; filter: blur(15px); }
 }
 
-/* 5. HOSPODA (Nové!) */
+/* 5. HOSPODA */
 .hospoda span {
     font-family: 'Rye', cursive; 
     font-size: 2.5rem;
-    color: #ffcc00; /* Zlatavá barva piva/dřeva */
+    color: #ffcc00; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000;
 }
 .hospoda:hover span {
     animation: tavern-glow 1s infinite alternate ease-in-out;
 }
 @keyframes tavern-glow {
-    /* Plápolající oheň v krbu za nápisem */
     0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px #d2691e, 0 0 20px #8b0000; }
     100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 20px #ff8c00, 0 0 45px #ff2200; }
 }
@@ -240,7 +247,7 @@ body, html {
     
     .slide-group {
         gap: 20px; 
-        padding-right: 20px; /* Musí být opět přesně stejné jako gap i na mobilu, aby neblikalo napojení! */
+        padding-right: 20px; 
     }
     
     .medival span { font-size: 1.5rem; padding: 5px 15px; }
