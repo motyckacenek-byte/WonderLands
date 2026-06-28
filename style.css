@@ -77,12 +77,6 @@ body, html {
     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
-.medival { background-image: url('medival.jpeg'); }
-.postapo { background-image: url('postapo.jpeg'); } 
-.cyber { background-image: url('cyber.jpeg'); }
-.frost { background-image: url('frost.jpeg'); }
-.hospoda { background-image: url('hospoda.jpeg'); } 
-
 /* ZÁKLADNÍ Napozicování pozadí */
 .portal::before {
     content: ''; 
@@ -92,18 +86,21 @@ body, html {
     width: 140%; 
     height: 100%;
     transform: skewX(15deg);
-    background: inherit; 
+    /* Odstraněno inherit dědění, které mohlo prohlížeč mást */
     background-size: cover; 
     background-repeat: no-repeat;
-    background-position: center 15%; 
     transition: 0.5s;
 }
 
-/* ÚPRAVY POZIC PRO DOROVNÁNÍ HLAV */
-/* Čím nižší procento, tím více se ukazuje vršek fotky (hlava). Nastaveno na 5 % */
-.medival::before { background-position: center 5%; } 
-.hospoda::before { background-position: center 5%; } 
-.frost::before { background-position: center 60%; }
+/* ==========================================
+   FOTKY A JEJICH PŘESNÉ POZICE
+   ========================================== */
+/* 0% = nadoraz nahoru na strop, aby se obličeje neřízly */
+.portal.medival::before { background-image: url('medival.jpeg'); background-position: center 0%; } 
+.portal.hospoda::before { background-image: url('hospoda.jpeg'); background-position: center 0%; } 
+.portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
+.portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
+.portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
 
 /* Jemný zoom pozadí při najetí myší */
 .portal:hover::before {
