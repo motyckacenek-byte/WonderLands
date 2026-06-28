@@ -12,7 +12,6 @@ body, html {
     overflow: hidden; 
 }
 
-/* Styl hlavního nadpisu */
 .main-title {
     position: absolute; 
     top: 5%; 
@@ -26,16 +25,16 @@ body, html {
     text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Kontejner pro karty - zde jsem zvětšil gap */
+/* Kontejner pro karty - nastaveno pro maximální prostor */
 .portal-grid {
     display: flex;
-    width: 85vw; /* Zúženo pro lepší vzhled */
-    height: 70vh; 
-    margin: 15vh auto; 
-    gap: 60px; /* Zvětšeno na 60px pro větší rozestupy */
+    width: 75vw; /* Zmenšeno na 75 %, aby byl prostor po stranách */
+    height: 60vh; 
+    margin: 20vh auto; 
+    gap: 80px; /* Výrazně zvětšená mezera mezi kartami */
+    justify-content: center;
 }
 
-/* Jednotlivý kosočtverec (Karta) */
 .portal {
     flex: 1;
     position: relative;
@@ -87,14 +86,13 @@ body, html {
     opacity: 1; 
 }
 
-/* Text pod obrázky */
 .sub-title {
     position: absolute;
-    bottom: 5%;
+    bottom: 8%; /* Posunuto trochu výš */
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     letter-spacing: 2px;
     z-index: 10;
     pointer-events: none;
