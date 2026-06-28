@@ -38,7 +38,7 @@ body, html {
     align-items: center;
 }
 
-/* Samotný běžící pás s fixací proti zasekávání */
+/* Samotný běžící pás */
 .carousel-track {
     display: flex;
     width: max-content;
@@ -71,10 +71,10 @@ body, html {
     position: relative;
     transform: skewX(-15deg);
     overflow: hidden;
-    border: 3px solid rgba(255,255,255,0.1);
+    border: 3px solid rgba(255,255,255,0.1); /* Základní neutrální rámeček */
     cursor: pointer;
     background-color: #050505;
-    transition: 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Plynulý náběh rámečku */
 }
 
 .medival { background-image: url('medival.jpeg'); }
@@ -83,7 +83,7 @@ body, html {
 .frost { background-image: url('frost.jpeg'); }
 .hospoda { background-image: url('hospoda.jpeg'); } 
 
-/* ZÁKLADNÍ Napozicování pozadí na obličeje */
+/* ZÁKLADNÍ Napozicování pozadí */
 .portal::before {
     content: ''; 
     position: absolute; 
@@ -99,23 +99,12 @@ body, html {
     transition: 0.5s;
 }
 
-/* ÚPRAVY POZIC PRO KONKRÉTNÍ FOTKY (Posun nahoru) */
-.medival::before {
-    background-position: center 30%; /* Posun o 15 % nahoru ze základu */
-}
+/* ÚPRAVY POZIC PRO KONKRÉTNÍ FOTKY (Vše posunuto nahoru) */
+.medival::before { background-position: center 50%; } /* Zvýšeno z 30 % na 50 % */
+.hospoda::before { background-position: center 50%; } /* Zvýšeno z 30 % na 50 % */
+.frost::before { background-position: center 60%; }
 
-.hospoda::before {
-    background-position: center 30%; /* Posun o 15 % nahoru ze základu */
-}
-
-.frost::before {
-    background-position: center 60%; /* Extrémní posun u Frostpunku */
-}
-
-.portal:hover {
-    border-color: #fff;
-}
-
+/* Jemný zoom pozadí při najetí myší */
 .portal:hover::before {
     transform: skewX(15deg) scale(1.05); 
 }
@@ -140,8 +129,59 @@ body, html {
     opacity: 1; 
 }
 
+
 /* ==========================================
-   SPECIÁLNÍ EFEKTY PRO JEDNOTLIVÉ LARPY
+   EFEKTY RÁMEČKŮ (Při najetí myší)
+   ========================================== */
+
+/* 1. FANTASY (Zlatavá záře) */
+.medival:hover {
+    border-color: #dcb560;
+    box-shadow: 0 0 20px rgba(220, 181, 96, 0.6), inset 0 0 15px rgba(139, 90, 43, 0.6);
+}
+
+/* 2. CYBERPUNK (Blikající neonový rámeček) */
+.cyber:hover {
+    animation: cyber-border 1.5s infinite alternate;
+}
+@keyframes cyber-border {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        border-color: #0fa;
+        box-shadow: 0 0 10px #0fa, 0 0 20px #0fa, inset 0 0 15px #0fa;
+    }
+    20%, 24%, 55% {
+        border-color: rgba(255,255,255,0.1);
+        box-shadow: none;
+    }
+}
+
+/* 3. POSTAPO (Oheň v rámečku) */
+.postapo:hover {
+    animation: postapo-border 0.15s infinite alternate;
+}
+@keyframes postapo-border {
+    0% { border-color: #ffae34; box-shadow: 0 0 10px #ffae34, inset 0 0 10px #cd4606; }
+    100% { border-color: #feec85; box-shadow: 0 0 20px #ffae34, inset 0 0 20px #ec760c; }
+}
+
+/* 4. FROSTPUNK (Chladná ledová záře) */
+.frost:hover {
+    border-color: #e0f7fa;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), inset 0 0 20px rgba(224, 247, 250, 0.6);
+}
+
+/* 5. HOSPODA (Pulzující teplo krbu v rámečku) */
+.hospoda:hover {
+    animation: hospoda-border 1s infinite alternate ease-in-out;
+}
+@keyframes hospoda-border {
+    0% { border-color: #d2691e; box-shadow: 0 0 10px #d2691e, inset 0 0 15px #8b0000; }
+    100% { border-color: #ffcc00; box-shadow: 0 0 25px #ff8c00, inset 0 0 25px #ff2200; }
+}
+
+
+/* ==========================================
+   EFEKTY NÁPISŮ UVNITŘ (Při najetí myší)
    ========================================== */
 
 /* 1. FANTASY */
@@ -224,6 +264,7 @@ body, html {
     0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px #d2691e, 0 0 20px #8b0000; }
     100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 20px #ff8c00, 0 0 45px #ff2200; }
 }
+
 
 /* ==========================================
    RESPONZIVNÍ DESIGN (PRO MOBILY A TABLETY)
