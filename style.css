@@ -100,9 +100,9 @@ body, html {
 }
 
 /* ÚPRAVY POZIC PRO DOROVNÁNÍ HLAV */
-/* Sníženo z 65 % na 40 % pro posun fotek směrem dolů */
-.medival::before { background-position: center 40%; } 
-.hospoda::before { background-position: center 40%; } 
+/* Čím nižší procento, tím více se ukazuje vršek fotky (hlava). Nastaveno na 5 % */
+.medival::before { background-position: center 5%; } 
+.hospoda::before { background-position: center 5%; } 
 .frost::before { background-position: center 60%; }
 
 /* Jemný zoom pozadí při najetí myší */
@@ -134,7 +134,7 @@ body, html {
    SPOLEČNÉ EFEKTY PRO NÁPISY I RÁMEČKY
    ========================================== */
 
-/* 1. FANTASY (Kopie pergamenu na rámeček) */
+/* 1. FANTASY */
 .medival span {
     font-family: 'MedievalSharp', cursive; 
     font-size: 2.2rem;
@@ -150,7 +150,7 @@ body, html {
     box-shadow: 0 0 15px rgba(220, 181, 96, 0.8), inset 0 0 20px rgba(139, 90, 43, 0.8);
 }
 
-/* 2. CYBERPUNK (Společný blikající neon) */
+/* 2. CYBERPUNK */
 .cyber span {
     font-family: 'Chakra Petch', sans-serif; 
     font-size: 2.5rem;
@@ -182,7 +182,7 @@ body, html {
     }
 }
 
-/* 3. POSTAPO (Společný oheň) */
+/* 3. POSTAPO */
 .postapo span {
     font-family: 'Stardos Stencil', system-ui; 
     font-size: 2.6rem;
@@ -204,7 +204,7 @@ body, html {
     100% { border-color: #fff; box-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c, inset 0 0 20px #cd4606; }
 }
 
-/* 4. FROSTPUNK (Odfukující pára textu a ledový frame) */
+/* 4. FROSTPUNK */
 .frost span {
     font-family: 'Rajdhani', sans-serif; 
     font-size: 3rem;
@@ -236,7 +236,7 @@ body, html {
     100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); }
 }
 
-/* 5. HOSPODA (Společné plápolání krbu) */
+/* 5. HOSPODA */
 .hospoda span {
     font-family: 'Rye', cursive; 
     font-size: 2.5rem;
