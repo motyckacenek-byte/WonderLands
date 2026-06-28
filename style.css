@@ -48,7 +48,7 @@ body, html {
 
 /* Přiřazení obrázků se SPRÁVNÝMI příponami */
 .medival { background-image: url('medival.jpeg'); }
-.postapo { background-image: url('postapo.jpg'); } /* Tady je to .jpg podle tvého GitHubu */
+.postapo { background-image: url('postapo.jepg'); } /* Tady je to .jpg podle tvého GitHubu */
 .cyber { background-image: url('cyber.jpeg'); }
 
 /* "Odzkosení" a napozicování obrázku uvnitř rámečku */
