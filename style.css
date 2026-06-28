@@ -99,10 +99,9 @@ body, html {
     transition: 0.5s;
 }
 
-/* ÚPRAVY POZIC PRO DOROVNÁNÍ HLAV */
-/* Výrazně posunuto na 85 %, aby se hlavy dostaly na úroveň ostatních */
-.medival::before { background-position: center 85%; } 
-.hospoda::before { background-position: center 85%; } 
+/* ÚPRAVY POZIC PRO DOROVNÁNÍ HLAV (Staženo z extrému na ideální střed) */
+.medival::before { background-position: center 65%; } 
+.hospoda::before { background-position: center 65%; } 
 .frost::before { background-position: center 60%; }
 
 /* Jemný zoom pozadí při najetí myší */
