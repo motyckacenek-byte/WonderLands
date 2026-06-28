@@ -1,9 +1,11 @@
+/* Přejmenoval jsem přípony na .jpg, aby to sedělo s tvými soubory */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { width: 100%; height: 100%; overflow: hidden; background: #000; }
+body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
 
 .smooth-background {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
+    z-index: -1;
 }
 
 .scene {
@@ -11,42 +13,39 @@ body, html { width: 100%; height: 100%; overflow: hidden; background: #000; }
     background-size: cover; background-position: center;
 }
 
-/* FANTASY (Vlevo) */
+/* 1. Fantasy (Levá strana) */
 .fantasy {
-    background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce7409d8?q=80&w=2070');
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 70%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 70%);
+    background-image: url('fantasy.jpg'); 
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
 }
 
-/* STEAMPUNK (Uprostřed) */
+/* 2. Steampunk (Střed) */
 .steampunk {
-    background-image: url('https://images.unsplash.com/photo-1515630278757-869d0d9f3737?q=80&w=2070');
+    background-image: url('steampunk.jpg');
     -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);
     mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);
 }
 
-/* CYBERPUNK (Vpravo) */
+/* 3. Cyberpunk (Pravá strana) */
 .cyberpunk {
-    background-image: url('https://images.unsplash.com/photo-1605806616949-1d87bd04ed37?q=80&w=2070');
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 70%);
-    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 70%);
+    background-image: url('cyberpunk.jpg');
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
 }
 
-/* Styl nápisu */
-.hero {
-    position: relative;
+/* Overlay pro sjednocení barev */
+.blend-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1;
+}
+
+.content {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    height: 100vh; color: white; text-align: center;
     z-index: 10;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 30px rgba(0,0,0,0.8);
+    pointer-events: none;
 }
 
-h1 {
-    font-size: 8vw;
-    font-family: sans-serif;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-}
+h1 { font-size: 8vw; letter-spacing: 10px; text-transform: uppercase; }
