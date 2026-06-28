@@ -42,7 +42,7 @@ body, html {
     transition: 0.5s ease;
     border: 3px solid rgba(255,255,255,0.1);
     cursor: pointer;
-    background-color: #050505; /* Barva pozadí pro případné prázdné rohy */
+    background-color: #050505;
 }
 
 .medival { background-image: url('medival.jpeg'); }
@@ -56,11 +56,12 @@ body, html {
     left: 0;
     width: 100%; 
     height: 100%;
-    transform: skewX(15deg); /* Narovnání fotky */
+    transform: skewX(15deg); 
     background: inherit; 
-    background-size: contain; /* Fotka se celá vejde, hlavy nebudou uříznuté */
+    background-size: contain; 
     background-repeat: no-repeat;
-    background-position: center center; /* Fotka bude pěkně uprostřed */
+    /* TADY JE TA ZMĚNA: "center 30%" posune obrázek v rámečku níže */
+    background-position: center 30%; 
     transition: 0.5s;
 }
 
