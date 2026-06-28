@@ -25,13 +25,12 @@ body, html {
     text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Kontejner pro karty - nastaveno pro maximální prostor */
 .portal-grid {
     display: flex;
-    width: 75vw; /* Zmenšeno na 75 %, aby byl prostor po stranách */
+    width: 85vw; 
     height: 60vh; 
     margin: 20vh auto; 
-    gap: 80px; /* Výrazně zvětšená mezera mezi kartami */
+    gap: 50px; 
     justify-content: center;
 }
 
@@ -53,13 +52,14 @@ body, html {
     content: ''; 
     position: absolute; 
     top: 0; 
-    left: -20%; 
-    width: 140%; 
+    left: -15%; /* Mírně upraveno, aby se obraz lépe vešel */
+    width: 130%; /* Trochu menší zvětšení, aby bylo vidět víc těla */
     height: 100%;
     transform: skewX(15deg); 
     background: inherit; 
     background-size: cover; 
-    background-position: center 10%; 
+    /* Klíčová změna: center center zajistí, že uvidíš více středu fotky */
+    background-position: center center; 
     transition: 0.5s;
 }
 
@@ -84,17 +84,4 @@ body, html {
 
 .portal:hover span { 
     opacity: 1; 
-}
-
-.sub-title {
-    position: absolute;
-    bottom: 8%; /* Posunuto trochu výš */
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    z-index: 10;
-    pointer-events: none;
-    text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
