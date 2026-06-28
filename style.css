@@ -38,14 +38,14 @@ body, html {
     align-items: center;
 }
 
-/* Samotný běžící pás */
+/* Samotný běžící pás s fixací proti zasekávání */
 .carousel-track {
     display: flex;
     width: max-content;
-    animation: scroll 25s linear infinite; 
+    animation: scroll 35s linear infinite; /* Nastaveno na 35s, protože máme více karet */
+    will-change: transform; /* Říká prohlížeči, ať si tohle dopředu vypočítá pro hladší chod */
 }
 
-/* Zastavení pásu při najetí myší */
 .carousel-track:hover {
     animation-play-state: paused;
 }
@@ -56,11 +56,12 @@ body, html {
     100% { transform: translateX(-50%); } 
 }
 
-/* Skupina 4 karet */
+/* Skupina 5 karet - Fixnuté hodnoty pro dokonalé napojení rotace */
 .slide-group {
     display: flex;
     gap: 50px; 
-    padding-right: 50px; 
+    padding-right: 50px; /* Musí být přesně stejné jako gap! */
+    flex: 0 0 auto; /* Zabrání nechtěnému zmenšování uvnitř prohlížeče */
 }
 
 /* Jednotlivá karta */
@@ -80,8 +81,9 @@ body, html {
 .postapo { background-image: url('postapo.jpeg'); } 
 .cyber { background-image: url('cyber.jpeg'); }
 .frost { background-image: url('frost.jpeg'); }
+.hospoda { background-image: url('hospoda.jpeg'); } /* Nová karta pro hospodu */
 
-/* ZÁKLADNÍ Napozicování pozadí na obličeje (Fantasy, Cyberpunk, Postapo) */
+/* ZÁKLADNÍ Napozicování pozadí na obličeje */
 .portal::before {
     content: ''; 
     position: absolute; 
@@ -97,9 +99,9 @@ body, html {
     transition: 0.5s;
 }
 
-/* ÚPRAVA POUZE PRO FROSTPUNK: Změněno z 35 % na 45 % */
+/* ÚPRAVA POUZE PRO FROSTPUNK: Posunuto ještě o 15 % výš (z 45 na 60) */
 .frost::before {
-    background-position: center 45%; 
+    background-position: center 60%; 
 }
 
 .portal:hover {
@@ -200,36 +202,50 @@ body, html {
     100% { transform: translateY(-40px) scale(1.3); opacity: 0; filter: blur(15px); }
 }
 
+/* 5. HOSPODA (Nové!) */
+.hospoda span {
+    font-family: 'Rye', cursive; 
+    font-size: 2.5rem;
+    color: #ffcc00; /* Zlatavá barva piva/dřeva */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000;
+}
+.hospoda:hover span {
+    animation: tavern-glow 1s infinite alternate ease-in-out;
+}
+@keyframes tavern-glow {
+    /* Plápolající oheň v krbu za nápisem */
+    0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px #d2691e, 0 0 20px #8b0000; }
+    100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 20px #ff8c00, 0 0 45px #ff2200; }
+}
+
 /* ==========================================
    RESPONZIVNÍ DESIGN (PRO MOBILY A TABLETY)
    ========================================== */
 @media (max-width: 768px) {
-    /* Zmenšení hlavního nadpisu a mezer */
     .main-title {
         font-size: 1.8rem;
         letter-spacing: 5px;
         top: 2%;
     }
     
-    /* Úprava kolotoče a karet pro menší displeje */
     .carousel-container {
         height: 60vh;
         margin-top: 15vh;
     }
     
     .portal {
-        flex: 0 0 250px; /* Užší karty pro displeje mobilů */
+        flex: 0 0 250px; 
         height: 55vh;
     }
     
     .slide-group {
-        gap: 20px; /* Menší mezery mezi kartami */
-        padding-right: 20px;
+        gap: 20px; 
+        padding-right: 20px; /* Musí být opět přesně stejné jako gap i na mobilu, aby neblikalo napojení! */
     }
     
-    /* Úměrné zmenšení textů uvnitř karet, aby neprotékaly */
     .medival span { font-size: 1.5rem; padding: 5px 15px; }
     .cyber span { font-size: 1.6rem; }
     .postapo span { font-size: 1.7rem; }
     .frost span { font-size: 1.8rem; }
+    .hospoda span { font-size: 1.6rem; }
 }
