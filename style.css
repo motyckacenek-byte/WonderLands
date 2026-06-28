@@ -86,7 +86,6 @@ body, html {
     width: 140%; 
     height: 100%;
     transform: skewX(15deg);
-    /* Odstraněno inherit dědění, které mohlo prohlížeč mást */
     background-size: cover; 
     background-repeat: no-repeat;
     transition: 0.5s;
@@ -95,7 +94,6 @@ body, html {
 /* ==========================================
    FOTKY A JEJICH PŘESNÉ POZICE
    ========================================== */
-/* 0% = nadoraz nahoru na strop, aby se obličeje neřízly */
 .portal.medival::before { background-image: url('medival.jpeg'); background-position: center 0%; } 
 .portal.hospoda::before { background-image: url('hospoda.jpeg'); background-position: center 0%; } 
 .portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
@@ -201,23 +199,36 @@ body, html {
     100% { border-color: #fff; box-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c, inset 0 0 20px #cd4606; }
 }
 
-/* 4. FROSTPUNK */
+/* 4. FROSTPUNK (Vylepšená, nepřetržitá a hustší pára) */
 .frost span {
     font-family: 'Rajdhani', sans-serif; 
     font-size: 3rem;
     color: #e0f7fa; 
     text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
-.frost:hover span::after {
+
+/* Dva proudy páry pro neustálý a hustší efekt */
+.frost span::before,
+.frost span::after {
     content: 'FROSTPUNK'; 
     position: absolute;
     top: 0; 
     left: 0;
     color: transparent;
-    text-shadow: 0 0 15px #fff;
-    animation: steam-rise 2s infinite ease-out;
     pointer-events: none;
+    opacity: 0;
 }
+
+/* První oblak páry */
+.frost:hover span::after {
+    animation: steam-rise 2s infinite linear;
+}
+
+/* Druhý oblak páry se zpožděním (aby se nepřetržitě doplňovaly) */
+.frost:hover span::before {
+    animation: steam-rise 2s infinite linear 1s;
+}
+
 .frost:hover {
     border-color: #e0f7fa;
     box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8);
@@ -225,15 +236,31 @@ body, html {
 }
 
 @keyframes steam-rise {
-    0% { transform: translateY(0) scale(1); opacity: 0.8; filter: blur(3px); }
-    100% { transform: translateY(-40px) scale(1.3); opacity: 0; filter: blur(15px); }
+    0% { 
+        transform: translateY(0) scale(1); 
+        opacity: 0.9; 
+        text-shadow: 0 0 10px rgba(255,255,255,0.8); 
+        filter: blur(2px); 
+    }
+    50% { 
+        opacity: 0.6; 
+        text-shadow: 0 -15px 20px rgba(255,255,255,1), 0 -20px 25px rgba(255,255,255,0.8); 
+        filter: blur(6px); 
+    }
+    100% { 
+        transform: translateY(-60px) scale(1.6); /* Stoupá výš a víc se roztahuje */
+        opacity: 0; 
+        text-shadow: 0 -30px 30px rgba(255,255,255,0.5), 0 -40px 40px rgba(255,255,255,0.3); 
+        filter: blur(15px); 
+    }
 }
+
 @keyframes steam-frame {
     0% { box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8); }
     100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); }
 }
 
-/* 5. HOSPODA */
+/* 5. HOSPODA / KRČMA */
 .hospoda span {
     font-family: 'Rye', cursive; 
     font-size: 2.5rem;
