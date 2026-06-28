@@ -9,16 +9,16 @@ body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial
 
 .portal-grid {
     display: flex;
-    width: 90vw; /* Šířka 90 % = vzniknou okraje po stranách */
-    height: 70vh; /* Výška 70 % = prostor nahoře a dole */
-    margin: 15vh auto; /* Vycentrování */
-    gap: 30px; /* Mezery mezi obrázky */
+    width: 90vw; 
+    height: 70vh; 
+    margin: 15vh auto; 
+    gap: 30px; 
 }
 
 .portal {
     flex: 1;
     position: relative;
-    transform: skewX(-15deg); /* Zkosení */
+    transform: skewX(-15deg); 
     overflow: hidden;
     transition: 0.5s ease;
     border: 3px solid rgba(255,255,255,0.1);
@@ -27,12 +27,11 @@ body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial
     cursor: pointer;
 }
 
-/* TVÉ OBRÁZKY (Zkontroluj, zda se v počítači jmenují přesně takto) */
-.medival { background-image: url('medival.jpg'); }
-.steam { background-image: url('steam.jpg'); }
-.cyber { background-image: url('cyber.jpg'); }
+/* OPRAVENÉ PŘÍPONY NA .jpeg */
+.medival { background-image: url('medival.jpeg'); }
+.steam { background-image: url('steam.jpeg'); }
+.cyber { background-image: url('cyber.jpeg'); }
 
-/* Toto "odzkosí" obrázek uvnitř rámečku, aby nebyl nakřivo */
 .portal::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     transform: skewX(15deg) scale(1.2); 
@@ -40,13 +39,11 @@ body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial
     transition: 0.5s;
 }
 
-/* Efekt najetí myší (karta se zvětší a rozsvítí rámeček) */
 .portal:hover {
     flex: 1.5; 
     border-color: #fff;
 }
 
-/* Text uprostřed (skrytý, dokud nenajedeš myší) */
 .portal span { 
     position: absolute; top: 50%; left: 50%; transform: skewX(15deg) translate(-50%, -50%);
     color: white; font-size: 1.5rem; font-weight: bold; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
