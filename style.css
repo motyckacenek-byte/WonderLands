@@ -12,7 +12,7 @@ body, html {
     overflow: hidden; 
 }
 
-/* Korporátní nadpis (bez čar nahoře/dole, přesně jak jsi chtěl) */
+/* Korporátní nadpis */
 .main-title {
     position: absolute; 
     top: 5%; 
@@ -28,40 +28,66 @@ body, html {
     text-transform: uppercase;
 }
 
-/* Kontejner upravený pro 4 karty */
-.portal-grid {
+/* Hlavní okno pro běžící pás */
+.carousel-container {
+    width: 100vw; 
+    height: 70vh; /* Zvětšený prostor pro větší rámečky */
+    margin-top: 18vh; 
+    overflow: hidden; 
     display: flex;
-    width: 90vw; /* Trochu širší, aby se 4 karty vešly pohodlně */
-    height: 60vh; 
-    margin: 20vh auto; 
-    gap: 30px; /* Zmenšená mezera, aby nebyly moc stlačené */
-    justify-content: center;
+    align-items: center;
 }
 
-/* Původní chování karet */
+/* Samotný běžící pás */
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 25s linear infinite; /* Zde můžeš upravit rychlost (např. 30s bude pomalejší) */
+}
+
+/* Zastavení pásu při najetí myší */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+/* Dokonalá smyčka */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* Skupina 4 karet */
+.slide-group {
+    display: flex;
+    gap: 50px; /* Mezera mezi kartami */
+    padding-right: 50px; /* Nutné pro napojení skupin na sebe */
+}
+
+/* Jednotlivá karta (zvětšeno) */
 .portal {
-    flex: 1; /* Karty se rovnoměrně rozdělí po obrazovce */
+    flex: 0 0 380px; /* Větší pevná šířka */
+    height: 65vh; /* Větší výška */
     position: relative;
     transform: skewX(-15deg);
     overflow: hidden;
-    transition: 0.5s ease;
     border: 3px solid rgba(255,255,255,0.1);
     cursor: pointer;
     background-color: #050505;
+    transition: 0.3s ease;
 }
 
 .medival { background-image: url('medival.jpeg'); }
 .postapo { background-image: url('postapo.jpeg'); } 
 .cyber { background-image: url('cyber.jpeg'); }
-.frost { background-image: url('frost.jpeg'); } /* Napojení fotky */
+.frost { background-image: url('frost.jpeg'); }
 
-/* Nastavení pozadí a vycentrování na obličeje (center 15%) */
+/* Napozicování pozadí na obličeje */
 .portal::before {
     content: ''; 
     position: absolute; 
     top: 0; 
-    left: 0;
-    width: 100%; 
+    left: -20%; /* Přetažení přes rohy kvůli zkosení */
+    width: 140%; 
     height: 100%;
     transform: skewX(15deg);
     background: inherit; 
@@ -71,12 +97,16 @@ body, html {
     transition: 0.5s;
 }
 
-/* Návrat původního roztahování po najetí myší! */
+/* Rozsvícení a jemný zoom fotky po najetí myší */
 .portal:hover {
-    flex: 1.5; 
     border-color: #fff;
 }
 
+.portal:hover::before {
+    transform: skewX(15deg) scale(1.05); /* Jemné přiblížení místo změny šířky */
+}
+
+/* Text uprostřed karet */
 .portal span { 
     position: absolute; 
     top: 50%; 
