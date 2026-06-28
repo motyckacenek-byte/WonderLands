@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial', sans-serif; }
+body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial', sans-serif; overflow: hidden; }
 
 .main-title {
     position: absolute; top: 5%; width: 100%; text-align: center;
@@ -9,10 +9,10 @@ body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial
 
 .portal-grid {
     display: flex;
-    width: 90vw; /* Šířka 90 % obrazovky = vzniknou okraje */
-    height: 70vh; /* Výška 70 % obrazovky = prostor nahoře a dole */
-    margin: 15vh auto; /* Vycentrování na střed */
-    gap: 30px; /* VŮLE mezi obrázky */
+    width: 90vw; /* Šířka 90 % = vzniknou okraje po stranách */
+    height: 70vh; /* Výška 70 % = prostor nahoře a dole */
+    margin: 15vh auto; /* Vycentrování */
+    gap: 30px; /* Mezery mezi obrázky */
 }
 
 .portal {
@@ -27,28 +27,29 @@ body, html { width: 100%; height: 100%; background: #050505; font-family: 'Arial
     cursor: pointer;
 }
 
-/* Tady si dej pozor, jestli máš v PC opravdu .png soubory */
-.fantasy { background-image: url('fantasy.png'); }
-.steampunk { background-image: url('steampunk.png'); }
-.cyberpunk { background-image: url('cyberpunk.png'); }
+/* TVÉ OBRÁZKY (Zkontroluj, zda se v počítači jmenují přesně takto) */
+.medival { background-image: url('medival.jpg'); }
+.steam { background-image: url('steam.jpg'); }
+.cyber { background-image: url('cyber.jpg'); }
 
-/* "Odzkosení" obsahu v kosočtverci */
+/* Toto "odzkosí" obrázek uvnitř rámečku, aby nebyl nakřivo */
 .portal::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    transform: skewX(15deg) scale(1.2); /* Zpětné narovnání obrázku */
+    transform: skewX(15deg) scale(1.2); 
     background: inherit; background-size: cover; background-position: center;
     transition: 0.5s;
 }
 
-/* Hover efekt */
+/* Efekt najetí myší (karta se zvětší a rozsvítí rámeček) */
 .portal:hover {
-    flex: 1.5; /* Zvětšení při najetí */
+    flex: 1.5; 
     border-color: #fff;
 }
 
+/* Text uprostřed (skrytý, dokud nenajedeš myší) */
 .portal span { 
     position: absolute; top: 50%; left: 50%; transform: skewX(15deg) translate(-50%, -50%);
-    color: white; font-size: 1.5rem; font-weight: bold;
-    opacity: 0; transition: 0.3s;
+    color: white; font-size: 1.5rem; font-weight: bold; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    opacity: 0; transition: 0.3s; z-index: 5;
 }
 .portal:hover span { opacity: 1; }
