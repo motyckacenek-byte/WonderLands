@@ -1,40 +1,46 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { width: 100%; height: 100%; overflow: hidden; background: #000; }
+body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
 
-/* 1. HLADKÉ POZADÍ */
-.background-blend { position: fixed; top:0; left:0; width: 100%; height: 100%; z-index: 1; }
-.layer { position: absolute; top:0; left:0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+/* Nadpis */
+.main-title {
+    position: absolute; top: 10%; width: 100%; text-align: center;
+    color: white; font-size: 5rem; z-index: 10; pointer-events: none;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
 
-.fantasy { background-image: url('fantasy.jpg'); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); }
-.steampunk { background-image: url('steampunk.jpg'); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%); mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%); }
-.cyberpunk { background-image: url('cyberpunk.jpg'); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); }
-
-/* 2. ZKOSENÉ PORTÁLY */
-.portal-container {
-    position: relative; z-index: 2;
-    display: flex; justify-content: center; align-items: center;
-    height: 100vh; gap: 50px; /* Mezera mezi portály */
+/* Grid pro kosočtverce */
+.portal-grid {
+    display: flex; width: 100vw; height: 100vh;
 }
 
 .portal {
-    width: 20%; height: 60%;
+    flex: 1; height: 100%;
+    position: relative;
     transform: skewX(-20deg); /* Zkosení */
-    border: 2px solid rgba(255,255,255,0.2);
-    transition: 0.4s ease;
-    background: rgba(255,255,255,0.05);
+    transform-origin: center;
+    margin: 0 -5vw; /* Překryv, aby nebyly mezery */
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s ease;
+    border-left: 2px solid rgba(255,255,255,0.2);
 }
 
-.portal:hover {
-    transform: skewX(-20deg) scale(1.05);
-    background: rgba(255,255,255,0.15);
-    border-color: #fff;
+/* Obrázky (POZOR: Musí se jmenovat .jpg přesně takhle) */
+.fantasy { background-image: url('fantasy.jpg'); }
+.steampunk { background-image: url('steampunk.jpg'); }
+.cyberpunk { background-image: url('cyberpunk.jpg'); }
+
+/* Aby se obrázek v kosočtverci nezkosil, musíme ho "odzkosit" */
+.portal::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    transform: skewX(20deg) scale(1.2); /* Kompenzace zkosení */
+    background: inherit; background-size: cover; background-position: center;
 }
 
-/* 3. NÁPIS */
-.main-title {
-    position: absolute; top: 10%; width: 100%;
-    text-align: center; color: white;
-    font-size: 5rem; z-index: 3;
-    pointer-events: none;
-    text-shadow: 0 0 20px black;
+.portal:hover { flex: 1.5; z-index: 5; }
+.portal span { 
+    position: absolute; top: 50%; left: 50%; transform: skewX(20deg) translate(-50%, -50%);
+    color: white; font-size: 2rem; opacity: 0; transition: 0.3s;
 }
+.portal:hover span { opacity: 1; }
