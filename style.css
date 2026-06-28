@@ -26,56 +26,49 @@ body, html {
     text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Kontejner pro všechny 3 obrázky */
+/* Kontejner pro karty - zde jsem zvětšil gap */
 .portal-grid {
     display: flex;
-    width: 90vw; 
+    width: 85vw; /* Zúženo pro lepší vzhled */
     height: 70vh; 
     margin: 15vh auto; 
-    gap: 30px; 
+    gap: 60px; /* Zvětšeno na 60px pro větší rozestupy */
 }
 
 /* Jednotlivý kosočtverec (Karta) */
 .portal {
     flex: 1;
     position: relative;
-    transform: skewX(-15deg); /* Naklonění doleva */
+    transform: skewX(-15deg);
     overflow: hidden;
     transition: 0.5s ease;
     border: 3px solid rgba(255,255,255,0.1);
     cursor: pointer;
 }
 
-/* TADY JSOU VŠECHNY TŘI SPRÁVNĚ JAKO .jpeg */
 .medival { background-image: url('medival.jpeg'); }
 .postapo { background-image: url('postapo.jpeg'); } 
 .cyber { background-image: url('cyber.jpeg'); }
 
-/* "Odzkosení" a napozicování obrázku uvnitř rámečku */
 .portal::before {
     content: ''; 
     position: absolute; 
     top: 0; 
-    left: -20%; /* Rozšíření do stran, aby nebyly prázdné rohy */
+    left: -20%; 
     width: 140%; 
     height: 100%;
-    transform: skewX(15deg); /* Narovnání fotky zpět, aby postavy nestály šikmo */
+    transform: skewX(15deg); 
     background: inherit; 
     background-size: cover; 
-    
-    /* 10% posune fotku víc na horní okraj, aby nebyly uříznuté hlavy */
     background-position: center 10%; 
-    
     transition: 0.5s;
 }
 
-/* Co se stane, když na fotku najedeš myší (zvětší se) */
 .portal:hover {
     flex: 1.5; 
     border-color: #fff;
 }
 
-/* Text uprostřed karty (FANTASY, POSTAPO, CYBERPUNK) */
 .portal span { 
     position: absolute; 
     top: 50%; 
@@ -90,21 +83,20 @@ body, html {
     z-index: 5;
 }
 
-/* Zobrazení textu po najetí myší */
 .portal:hover span { 
     opacity: 1; 
 }
 
-/* Nový text pod obrázky */
+/* Text pod obrázky */
 .sub-title {
     position: absolute;
-    bottom: 5%; /* Umístí text 5 % od spodního okraje */
+    bottom: 5%;
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 2rem; /* Velikost textu (o něco menší než nadpis) */
+    font-size: 2rem;
     letter-spacing: 2px;
     z-index: 10;
-    pointer-events: none; /* Aby text nepřekážel klikání na obrázky, kdyby se náhodou překrývaly */
-    text-shadow: 0 0 20px rgba(0,0,0,0.5); /* Stejný stín jako u hlavního nadpisu */
+    pointer-events: none;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
