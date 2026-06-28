@@ -46,9 +46,9 @@ body, html {
     cursor: pointer;
 }
 
-/* Přiřazení obrázků se SPRÁVNÝMI příponami */
+/* TADY JSOU VŠECHNY TŘI SPRÁVNĚ JAKO .jpeg */
 .medival { background-image: url('medival.jpeg'); }
-.postapo { background-image: url('postapo.jepg'); } /* Tady je to .jpg podle tvého GitHubu */
+.postapo { background-image: url('postapo.jpeg'); } 
 .cyber { background-image: url('cyber.jpeg'); }
 
 /* "Odzkosení" a napozicování obrázku uvnitř rámečku */
