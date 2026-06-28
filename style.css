@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    color: #fff;
+    min-height: 100vh;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- KOUZLO S PLYNULÝM POZADÍM --- */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 1. Steampunk (Střed) - Základní vrstva vzadu */
+.bg-steampunk {
+    /* Nahraď vlastním obrázkem */
+    background-image: url('steampunk-bg.jpg'); 
+    z-index: 1;
+}
+
+/* 2. Fantasy (Levá strana) - Zmizí plynule do středu */
+.bg-fantasy {
+    /* Nahraď vlastním obrázkem */
+    background-image: url('fantasy-bg.jpg');
+    z-index: 2;
+    /* Maska: Zleva do 30% je plně vidět, pak plynule mizí do 55% */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 55%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 55%);
+}
+
+/* 3. Cyberpunk (Pravá strana) - Zmizí plynule do středu */
+.bg-cyberpunk {
+    /* Nahraď vlastním obrázkem */
+    background-image: url('cyberpunk-bg.jpg');
+    z-index: 2;
+    /* Maska: Zprava doleva plně vidět od 70%, plynule se objevuje od 45% */
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 55%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 55%);
+}
+
+/* Lehký tmavý filtr přes celé pozadí, aby byl text čitelný */
+.background-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+}
+
+/* --- HLAVNÍ OBSAH A ROZLOŽENÍ --- */
+.wonderlands-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 60px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
+
+.main-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 4.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.main-header h1 span {
+    color: #f4a261; /* Barva propojení, můžeš upravit */
+}
+
+.main-header p {
+    font-size: 1.3rem;
+    color: #ccc;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* --- KARTY (PORTÁLY) --- */
+.portals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.portal-card {
+    text-decoration: none;
+    color: #fff;
+    height: 450px;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Glassmorphism efekt karty */
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: hidden;
+    position: relative;
+}
+
+.portal-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(10, 10, 10, 0.7);
+}
+
+.portal-content {
+    position: relative;
+    z-index: 2;
+}
+
+.portal-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.portal-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #ddd;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.portal-card:hover .portal-content p {
+    opacity: 1;
+}
+
+/* Specifické styly pro jednotlivé žánry při najetí myší */
+.fantasy-portal h2 { font-family: 'Cinzel', serif; }
+.fantasy-portal:hover { box-shadow: 0 15px 30px rgba(45, 106, 79, 0.5); border-color: #52b788; }
+.fantasy-portal:hover h2 { color: #52b788; }
+
+.steampunk-portal h2 { font-family: 'Cinzel', serif; }
+.steampunk-portal:hover { box-shadow: 0 15px 30px rgba(180, 100, 30, 0.5); border-color: #f4a261; }
+.steampunk-portal:hover h2 { color: #f4a261; }
+
+.cyberpunk-portal h2 { font-family: 'Orbitron', sans-serif; }
+.cyberpunk-portal:hover { box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4); border-color: #00ffff; }
+.cyberpunk-portal:hover h2 { color: #00ffff; }
+
+/* Responzivita pro mobily */
+@media (max-width: 1000px) {
+    .portals-grid {
+        grid-template-columns: 1fr;
+    }
+    .portal-card {
+        height: 300px;
+    }
+    .main-header h1 {
+        font-size: 3rem;
+    }
+    /* Na mobilech zrušíme složitý gradient zleva doprava a uděláme ho shora dolů */
+    .bg-fantasy {
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 40%);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 40%);
+    }
+    .bg-cyberpunk {
+        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 40%);
+        mask-image: linear-gradient(to top, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 40%);
+    }
+}
