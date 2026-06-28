@@ -1,50 +1,45 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
 
-.smooth-background {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
+/* POZADÍ (Stejné jako předtím - to smooth prolínání) */
+.smooth-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+
+.fantasy { background-image: url('fantasy.jpg'); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%); mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%); }
+.steampunk { background-image: url('steampunk.jpg'); -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%); mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%); }
+.cyberpunk { background-image: url('cyberpunk.jpg'); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); }
+
+/* KONTEJNER PORTÁLŮ */
+.portal-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 40px; /* Mezera mezi portály */
 }
 
-.scene {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover; background-position: center;
+/* PORTÁLY (To "zkosení") */
+.portal {
+    width: 250px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transform: skewX(-15deg); /* Tady se to řeže bokem */
+    transition: 0.3s;
 }
 
-/* FANTASY (Vlevo) */
-.fantasy {
-    background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce7409d8?q=80&w=2070');
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
-}
+/* Aby text nebyl nakloněný, musíme ho "odklonit" zpět */
+.portal h2 { transform: skewX(15deg); font-size: 1.5rem; letter-spacing: 2px; }
 
-/* STEAMPUNK (Uprostřed) */
-.steampunk {
-    background-image: url('https://images.unsplash.com/photo-1515630278757-869d0d9f3737?q=80&w=2070');
-    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);
-    mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);
+/* Hover efekt */
+.portal:hover {
+    transform: skewX(-15deg) scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffb703;
 }
-
-/* CYBERPUNK (Vpravo) */
-.cyberpunk {
-    background-image: url('https://images.unsplash.com/photo-1605806616949-1d87bd04ed37?q=80&w=2070');
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
-    mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
-}
-
-/* Sjednocující vrstva */
-.blend-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
-    z-index: 1;
-}
-
-.content {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    height: 100vh; color: white; text-align: center;
-    z-index: 10;
-    pointer-events: none; /* Text nebude překážet klikání */
-}
-
-h1 { font-size: 5rem; letter-spacing: 10px; }
