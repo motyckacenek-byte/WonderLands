@@ -99,9 +99,10 @@ body, html {
     transition: 0.5s;
 }
 
-/* ÚPRAVY POZIC PRO DOROVNÁNÍ HLAV (Staženo z extrému na ideální střed) */
-.medival::before { background-position: center 65%; } 
-.hospoda::before { background-position: center 65%; } 
+/* ÚPRAVY POZIC PRO DOROVNÁNÍ HLAV */
+/* Sníženo z 65 % na 40 % pro posun fotek směrem dolů */
+.medival::before { background-position: center 40%; } 
+.hospoda::before { background-position: center 40%; } 
 .frost::before { background-position: center 60%; }
 
 /* Jemný zoom pozadí při najetí myší */
