@@ -81,7 +81,7 @@ body, html {
 .cyber { background-image: url('cyber.jpeg'); }
 .frost { background-image: url('frost.jpeg'); }
 
-/* Napozicování pozadí na obličeje */
+/* ZÁKLADNÍ Napozicování pozadí na obličeje (Fantasy, Cyberpunk, Postapo) */
 .portal::before {
     content: ''; 
     position: absolute; 
@@ -97,6 +97,11 @@ body, html {
     transition: 0.5s;
 }
 
+/* ÚPRAVA POUZE PRO FROSTPUNK: Posun obrazu o 20 % nahoru */
+.frost::before {
+    background-position: center 35%; 
+}
+
 .portal:hover {
     border-color: #fff;
 }
@@ -108,9 +113,8 @@ body, html {
 /* ZÁKLADNÍ NASTAVENÍ TEXTU - Přesunuto úplně dolů */
 .portal span { 
     position: absolute; 
-    bottom: 8%; /* Přesunuto k dolnímu okraji */
+    bottom: 8%; 
     left: 50%; 
-    /* U transformace jsme odstranili -50% u Y osy, posouváme už jen horizontálně */
     transform: skewX(15deg) translateX(-50%);
     color: white; 
     font-weight: 900; 
@@ -126,16 +130,15 @@ body, html {
     opacity: 1; 
 }
 
-
 /* ==========================================
    SPECIÁLNÍ EFEKTY PRO JEDNOTLIVÉ LARPY
-   (Včetně odlišných velikostí a Google Fontů)
+   (S novými fonty do budoucna)
    ========================================== */
 
 /* 1. FANTASY (Středověký pergamen) */
 .medival span {
-    font-family: 'Cinzel', serif; /* Epický fantasy font */
-    font-size: 2.2rem; /* Velikost upravena kvůli rámečku */
+    font-family: 'MedievalSharp', cursive; /* Skvělý a čitelný středověký font */
+    font-size: 2.2rem;
     color: #2b1100;
     background: linear-gradient(135deg, #f5e2b0, #dcb560);
     padding: 5px 30px;
@@ -146,7 +149,7 @@ body, html {
 
 /* 2. CYBERPUNK (Blikající sci-fi neon) */
 .cyber span {
-    font-family: 'Orbitron', sans-serif; /* Futuristický tech font */
+    font-family: 'Chakra Petch', sans-serif; /* Futuristický UI font */
     font-size: 2.5rem;
     color: #fff;
 }
@@ -162,10 +165,10 @@ body, html {
     }
 }
 
-/* 3. POSTAPO (Oheň + drsný military font) */
+/* 3. POSTAPO (Oheň) */
 .postapo span {
-    font-family: 'Black Ops One', system-ui; /* Drsný "stencil" font */
-    font-size: 2.8rem;
+    font-family: 'Stardos Stencil', system-ui; /* Drsný military/stencil font */
+    font-size: 2.6rem;
     color: #fff;
 }
 .postapo:hover span {
@@ -176,9 +179,9 @@ body, html {
     100% { text-shadow: 0 0 5px #fefcc9, -1px -3px 4px #feec85, 2px -5px 6px #ffae34, -2px -10px 10px #ec760c, 1px -14px 12px #cd4606; }
 }
 
-/* 4. FROSTPUNK (Vysoký ledový font + pára) */
+/* 4. FROSTPUNK (Odfukující pára) */
 .frost span {
-    font-family: 'Oswald', sans-serif; /* Vysoký, chladně formální font */
+    font-family: 'Rajdhani', sans-serif; /* Hranatý, chladný a velmi technický font */
     font-size: 3rem;
     color: #e0f7fa; 
     text-shadow: 0 0 10px rgba(255,255,255,0.8);
