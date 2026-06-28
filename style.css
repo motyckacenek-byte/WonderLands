@@ -1,4 +1,5 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
 
 .smooth-background {
@@ -11,28 +12,28 @@ body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font
     background-size: cover; background-position: center;
 }
 
-/* 1. Fantasy vlevo */
+/* FANTASY (Vlevo) */
 .fantasy {
     background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce7409d8?q=80&w=2070');
     -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
     mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 70%);
 }
 
-/* 2. Steampunk uprostřed */
+/* STEAMPUNK (Uprostřed) */
 .steampunk {
     background-image: url('https://images.unsplash.com/photo-1515630278757-869d0d9f3737?q=80&w=2070');
     -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);
     mask-image: linear-gradient(to right, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 90%);
 }
 
-/* 3. Cyberpunk vpravo */
+/* CYBERPUNK (Vpravo) */
 .cyberpunk {
     background-image: url('https://images.unsplash.com/photo-1605806616949-1d87bd04ed37?q=80&w=2070');
     -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
     mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
 }
 
-/* Tento overlay sjednotí barvy a skryje případné ostré hrany */
+/* Sjednocující vrstva */
 .blend-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
@@ -43,4 +44,7 @@ body, html { width: 100%; height: 100%; overflow: hidden; background: #000; font
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     height: 100vh; color: white; text-align: center;
     z-index: 10;
+    pointer-events: none; /* Text nebude překážet klikání */
 }
+
+h1 { font-size: 5rem; letter-spacing: 10px; }
