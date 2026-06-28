@@ -94,3 +94,17 @@ body, html {
 .portal:hover span { 
     opacity: 1; 
 }
+
+/* Nový text pod obrázky */
+.sub-title {
+    position: absolute;
+    bottom: 5%; /* Umístí text 5 % od spodního okraje */
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 2rem; /* Velikost textu (o něco menší než nadpis) */
+    letter-spacing: 2px;
+    z-index: 10;
+    pointer-events: none; /* Aby text nepřekážel klikání na obrázky, kdyby se náhodou překrývaly */
+    text-shadow: 0 0 20px rgba(0,0,0,0.5); /* Stejný stín jako u hlavního nadpisu */
+}
