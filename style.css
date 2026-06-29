@@ -100,11 +100,11 @@ body, html {
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
 
-/* LOUPEŽNÍK: Fotka přes celý rámeček, zaměřeno na obličej (boty oříznuty dole) */
+/* LOUPEŽNÍK */
 .portal.zlodej::before  { 
     background-image: url('zlodej.png');  
-    background-size: cover; /* Vyplní celý rámeček bez pruhů */
-    background-position: center 5%; /* Zvednuto nahoru, aby vynikla hlava a hruď */
+    background-size: cover; 
+    background-position: center 5%; 
 }
 
 /* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší - Všeobecný */
@@ -115,7 +115,7 @@ body, html {
 
 /* Speciální jemný zoom pro LOUPEŽNICKÝ LES */
 .portal.zlodej:hover::before {
-    transform: skewX(15deg) scale(1.08) translateX(-5px); /* Jemný plynulý zoom bez rozbití rámečku */
+    transform: skewX(15deg) scale(1.08) translateX(-5px); 
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
@@ -143,20 +143,25 @@ body, html {
    SPOLEČNÉ EFEKTY PRO NÁPISY I RÁMEČKY
    ========================================== */
 
-/* 1. FANTASY */
+/* 1. FANTASY (Magické fialové runy) */
 .medival span {
-    font-family: 'MedievalSharp', cursive; 
-    font-size: 2.2rem;
-    color: #2b1100;
-    background: linear-gradient(135deg, #f5e2b0, #dcb560);
-    padding: 5px 30px;
-    border: 2px solid #8b5a2b;
-    border-radius: 3px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.8), inset 0 0 10px rgba(139, 90, 43, 0.4);
+    font-family: 'Metamorphous', cursive; /* Runový vzhled */
+    font-size: 2.5rem;
+    color: #e9d5ff; /* Velmi světle fialová */
+    text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87;
+    letter-spacing: 5px;
+}
+.medival:hover span {
+    animation: rune-pulse 1.5s infinite alternate ease-in-out;
 }
 .medival:hover {
-    border-color: #dcb560;
-    box-shadow: 0 0 15px rgba(220, 181, 96, 0.8), inset 0 0 20px rgba(139, 90, 43, 0.8);
+    border-color: #a855f7;
+    box-shadow: 0 0 15px #9333ea, inset 0 0 25px rgba(147, 51, 234, 0.6);
+}
+
+@keyframes rune-pulse {
+    0% { text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87; color: #e9d5ff; }
+    100% { text-shadow: 0 0 15px #c084fc, 0 0 30px #a855f7, 0 0 50px #7e22ce; color: #ffffff; }
 }
 
 /* 2. CYBERPUNK */
@@ -296,7 +301,7 @@ body, html {
         padding-right: 20px; 
     }
     
-    .medival span { font-size: 1.5rem; padding: 5px 15px; }
+    .medival span { font-size: 1.5rem; }
     .cyber span { font-size: 1.6rem; }
     .postapo span { font-size: 1.7rem; }
     .frost span { font-size: 1.8rem; }
