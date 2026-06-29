@@ -100,12 +100,11 @@ body, html {
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
 
-/* LOUPEŽNÍK: Lehký kompromis (80 %), aby byl blíž, ale pořád byla vidět část postavy */
+/* LOUPEŽNÍK: Fotka přes celý rámeček, zaměřeno na obličej (boty oříznuty dole) */
 .portal.zlodej::before  { 
     background-image: url('zlodej.png');  
-    background-size: 80%; /* Místo extrémního contain fotku o něco přiblížíme */
-    background-position: center 30%; /* Lehce ji zvedneme na obličej */
-    background-color: #0d0805; 
+    background-size: cover; /* Vyplní celý rámeček bez pruhů */
+    background-position: center 5%; /* Zvednuto nahoru, aby vynikla hlava a hruď */
 }
 
 /* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší - Všeobecný */
@@ -116,7 +115,7 @@ body, html {
 
 /* Speciální jemný zoom pro LOUPEŽNICKÝ LES */
 .portal.zlodej:hover::before {
-    transform: skewX(15deg) scale(1.05) translateX(-5px); 
+    transform: skewX(15deg) scale(1.08) translateX(-5px); /* Jemný plynulý zoom bez rozbití rámečku */
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
@@ -231,9 +230,9 @@ body, html {
     100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); }
 }
 
-/* 5. HOSPODA / KRČMA (Opravený font podporující českou diakritiku) */
+/* 5. HOSPODA / KRČMA */
 .hospoda span {
-    font-family: 'MedievalSharp', cursive; /* Byl změněn font z Rye pro záchranu háčků */
+    font-family: 'MedievalSharp', cursive;
     font-size: 2.5rem;
     color: #ffcc00; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000;
@@ -250,7 +249,7 @@ body, html {
     100% { border-color: #ffcc00; box-shadow: 0 0 25px #ff8c00, inset 0 0 25px #ff2200; }
 }
 
-/* 6. LOUPEŽNICKÝ LES (Vzhled masivního dřeva) */
+/* 6. LOUPEŽNICKÝ LES */
 .zlodej span {
     font-family: 'MedievalSharp', cursive; 
     font-size: 1.6rem; 
