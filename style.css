@@ -99,8 +99,13 @@ body, html {
 .portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
-/* Cílíme fotku víc na střed, aby bylo vidět tělo */
-.portal.zlodej::before  { background-image: url('zlodej.jpeg');  background-position: center 30%; }
+
+/* LOUPEŽNÍK: Maximální bezpečné oddálení fotky, aby bylo vidět co nejvíc těla i obličeje */
+.portal.zlodej::before  { 
+    background-image: url('zlodej.jpeg');  
+    background-size: 100% auto; /* Odzoomováno na šířku, aby nedošlo k ořezu */
+    background-position: center 10%; /* Zacíleno na hlavu a tělo */
+}
 
 /* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší - Všeobecný */
 .portal:hover::before {
@@ -108,7 +113,7 @@ body, html {
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
-/* Speciální upravený zoom pro LOUPEŽNICKÝ LES (aby nedojížděl moc blízko a nevyřezal tělo) */
+/* Speciální jemný zoom pro LOUPEŽNICKÝ LES */
 .portal.zlodej:hover::before {
     transform: skewX(15deg) scale(1.03) translateX(-5px); 
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
@@ -247,25 +252,21 @@ body, html {
 /* 6. LOUPEŽNICKÝ LES (Vzhled masivního dřeva) */
 .zlodej span {
     font-family: 'MedievalSharp', cursive; 
-    /* Menší písmo, aby se delší text dobře vešel */
     font-size: 1.6rem; 
-    color: #e6c280; /* Světlé dřevo / nazlátlá barva */
-    /* Vytvoření iluze tmavé dřevěné desky */
+    color: #e6c280; 
     background: linear-gradient(180deg, #5a361e 0%, #3e2312 50%, #261409 100%);
     padding: 8px 25px;
-    border: 3px solid #140a04; /* Tmavý dřevěný rám cedulky */
+    border: 3px solid #140a04; 
     border-radius: 4px;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8), inset 2px 2px 5px rgba(255,255,255,0.05);
 }
 
 .zlodej:hover span {
     color: #fff;
-    /* Dřevo se jemně prozáří zespodu */
     box-shadow: 4px 4px 15px rgba(0,0,0,1), inset 0 0 15px #8b5a2b;
 }
 
 .zlodej:hover {
-    /* Rámeček celé karty nabere barvu dubového dřeva a vnitřní hloubku */
     border-color: #6b4226;
     box-shadow: 0 0 15px #4a2e1b, inset 0 0 30px rgba(49, 28, 15, 0.8);
 }
@@ -300,6 +301,5 @@ body, html {
     .postapo span { font-size: 1.7rem; }
     .frost span { font-size: 1.8rem; }
     .hospoda span { font-size: 1.6rem; }
-    /* Přizpůsobení velikosti pro mobil, aby text nevylezl ven */
     .zlodej span { font-size: 1.2rem; padding: 5px 15px; }
 }
