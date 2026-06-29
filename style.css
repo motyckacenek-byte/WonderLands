@@ -100,11 +100,11 @@ body, html {
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
 
-/* LOUPEŽNÍK: Změněno na .png */
+/* LOUPEŽNÍK: Lehký kompromis (80 %), aby byl blíž, ale pořád byla vidět část postavy */
 .portal.zlodej::before  { 
     background-image: url('zlodej.png');  
-    background-size: contain; 
-    background-position: center center; 
+    background-size: 80%; /* Místo extrémního contain fotku o něco přiblížíme */
+    background-position: center 30%; /* Lehce ji zvedneme na obličej */
     background-color: #0d0805; 
 }
 
@@ -231,9 +231,9 @@ body, html {
     100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); }
 }
 
-/* 5. HOSPODA / KRČMA */
+/* 5. HOSPODA / KRČMA (Opravený font podporující českou diakritiku) */
 .hospoda span {
-    font-family: 'Rye', cursive; 
+    font-family: 'MedievalSharp', cursive; /* Byl změněn font z Rye pro záchranu háčků */
     font-size: 2.5rem;
     color: #ffcc00; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000;
