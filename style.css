@@ -94,8 +94,8 @@ body, html {
 /* ==========================================
    FOTKY A JEJICH PŘESNÉ POZICE
    ========================================== */
-.portal.medival::before { background-image: url('medival.jpeg'); background-position: center 15%; } 
-.portal.hospoda::before { background-image: url('hospoda.jpeg'); background-position: center 15%; } 
+.portal.medival::before { background-image: url('medival.jpeg'); background-position: center 25%; } 
+.portal.hospoda::before { background-image: url('hospoda.jpeg'); background-position: center 25%; } 
 .portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
