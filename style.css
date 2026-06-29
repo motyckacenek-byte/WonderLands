@@ -38,7 +38,7 @@ body, html {
     align-items: center;
 }
 
-/* Samotný běžící pás (nepatrně zpomaleno kvůli přidání 6. karty) */
+/* Samotný běžící pás */
 .carousel-track {
     display: flex;
     width: max-content;
@@ -56,7 +56,7 @@ body, html {
     100% { transform: translateX(-50%); } 
 }
 
-/* Skupina karet (nyní 6) */
+/* Skupina 6 karet */
 .slide-group {
     display: flex;
     gap: 50px; 
@@ -88,7 +88,6 @@ body, html {
     transform: skewX(15deg) scale(1) translateX(0);
     background-size: cover; 
     background-repeat: no-repeat;
-    /* Rychlejší a hladký návrat do původního stavu při odjetí myši */
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -100,13 +99,18 @@ body, html {
 .portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
-.portal.zlodej::before  { background-image: url('zlodej.jpeg');  background-position: center 20%; }
+/* Cílíme fotku víc na střed, aby bylo vidět tělo */
+.portal.zlodej::before  { background-image: url('zlodej.jpeg');  background-position: center 30%; }
 
-/* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší */
+/* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší - Všeobecný */
 .portal:hover::before {
-    /* Výraznější zoom + mírný posun fotky vytvoří iluzi pohybu kamery */
     transform: skewX(15deg) scale(1.15) translateX(-15px); 
-    /* Dlouhý čas zajistí, že fotka "pluje" velmi pomalu celou dobu, co nad ní stojíš myší */
+    transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
+}
+
+/* Speciální upravený zoom pro LOUPEŽNICKÝ LES (aby nedojížděl moc blízko a nevyřezal tělo) */
+.portal.zlodej:hover::before {
+    transform: skewX(15deg) scale(1.03) translateX(-5px); 
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
@@ -156,30 +160,16 @@ body, html {
     font-size: 2.5rem;
     color: #fff;
 }
-.cyber:hover span {
-    animation: neon-flicker 1.5s infinite alternate;
-}
-.cyber:hover {
-    animation: neon-flicker-frame 1.5s infinite alternate;
-}
+.cyber:hover span { animation: neon-flicker 1.5s infinite alternate; }
+.cyber:hover { animation: neon-flicker-frame 1.5s infinite alternate; }
 
 @keyframes neon-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0fa, 0 0 40px #0fa, 0 0 80px #0fa;
-    }
-    20%, 24%, 55% {
-        text-shadow: none; 
-    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0fa, 0 0 40px #0fa, 0 0 80px #0fa; }
+    20%, 24%, 55% { text-shadow: none; }
 }
 @keyframes neon-flicker-frame {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        border-color: #fff;
-        box-shadow: 0 0 5px #fff, 0 0 10px #0fa, 0 0 20px #0fa, inset 0 0 20px #0fa;
-    }
-    20%, 24%, 55% {
-        border-color: rgba(255,255,255,0.1); 
-        box-shadow: none; 
-    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { border-color: #fff; box-shadow: 0 0 5px #fff, 0 0 10px #0fa, 0 0 20px #0fa, inset 0 0 20px #0fa; }
+    20%, 24%, 55% { border-color: rgba(255,255,255,0.1); box-shadow: none; }
 }
 
 /* 3. POSTAPO */
@@ -188,12 +178,8 @@ body, html {
     font-size: 2.6rem;
     color: #fff;
 }
-.postapo:hover span {
-    animation: fire-burn 0.15s infinite alternate;
-}
-.postapo:hover {
-    animation: fire-burn-frame 0.15s infinite alternate;
-}
+.postapo:hover span { animation: fire-burn 0.15s infinite alternate; }
+.postapo:hover { animation: fire-burn-frame 0.15s infinite alternate; }
 
 @keyframes fire-burn {
     0% { text-shadow: 0 0 5px #fefcc9, 1px -2px 3px #feec85, -2px -4px 5px #ffae34, 2px -8px 8px #ec760c, -1px -12px 10px #cd4606; }
@@ -211,7 +197,6 @@ body, html {
     color: #e0f7fa; 
     text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
-
 .frost span::before,
 .frost span::after {
     content: 'FROSTPUNK'; 
@@ -222,10 +207,8 @@ body, html {
     pointer-events: none;
     opacity: 0;
 }
-
 .frost:hover span::after { animation: steam-rise 2s infinite linear; }
 .frost:hover span::before { animation: steam-rise 2s infinite linear 1s; }
-
 .frost:hover {
     border-color: #e0f7fa;
     box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8);
@@ -249,12 +232,8 @@ body, html {
     color: #ffcc00; 
     text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000;
 }
-.hospoda:hover span {
-    animation: tavern-glow 1s infinite alternate ease-in-out;
-}
-.hospoda:hover {
-    animation: tavern-glow-frame 1s infinite alternate ease-in-out;
-}
+.hospoda:hover span { animation: tavern-glow 1s infinite alternate ease-in-out; }
+.hospoda:hover { animation: tavern-glow-frame 1s infinite alternate ease-in-out; }
 
 @keyframes tavern-glow {
     0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px #d2691e, 0 0 20px #8b0000; }
@@ -265,27 +244,30 @@ body, html {
     100% { border-color: #ffcc00; box-shadow: 0 0 25px #ff8c00, inset 0 0 25px #ff2200; }
 }
 
-/* 6. LOUPEŽNÍCI / LES */
+/* 6. LOUPEŽNICKÝ LES (Vzhled masivního dřeva) */
 .zlodej span {
     font-family: 'MedievalSharp', cursive; 
-    font-size: 2.3rem;
-    color: #b5d6a7; /* Bledě zelená barva lesa */
-    text-shadow: 2px 2px 5px rgba(0,0,0,1), 0 0 15px #114a24;
-}
-.zlodej:hover span {
-    animation: forest-glow 2s infinite alternate ease-in-out;
-}
-.zlodej:hover {
-    animation: forest-glow-frame 2s infinite alternate ease-in-out;
+    /* Menší písmo, aby se delší text dobře vešel */
+    font-size: 1.6rem; 
+    color: #e6c280; /* Světlé dřevo / nazlátlá barva */
+    /* Vytvoření iluze tmavé dřevěné desky */
+    background: linear-gradient(180deg, #5a361e 0%, #3e2312 50%, #261409 100%);
+    padding: 8px 25px;
+    border: 3px solid #140a04; /* Tmavý dřevěný rám cedulky */
+    border-radius: 4px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8), inset 2px 2px 5px rgba(255,255,255,0.05);
 }
 
-@keyframes forest-glow {
-    0% { text-shadow: 2px 2px 5px rgba(0,0,0,1), 0 0 15px #114a24; color: #b5d6a7; }
-    100% { text-shadow: 3px 3px 8px rgba(0,0,0,1), 0 0 25px #2e8b57, 0 0 40px #006400; color: #fff; }
+.zlodej:hover span {
+    color: #fff;
+    /* Dřevo se jemně prozáří zespodu */
+    box-shadow: 4px 4px 15px rgba(0,0,0,1), inset 0 0 15px #8b5a2b;
 }
-@keyframes forest-glow-frame {
-    0% { border-color: #2e8b57; box-shadow: 0 0 10px #114a24, inset 0 0 15px #003300; }
-    100% { border-color: #3cb371; box-shadow: 0 0 25px #2e8b57, inset 0 0 30px #006400; }
+
+.zlodej:hover {
+    /* Rámeček celé karty nabere barvu dubového dřeva a vnitřní hloubku */
+    border-color: #6b4226;
+    box-shadow: 0 0 15px #4a2e1b, inset 0 0 30px rgba(49, 28, 15, 0.8);
 }
 
 /* ==========================================
@@ -318,5 +300,6 @@ body, html {
     .postapo span { font-size: 1.7rem; }
     .frost span { font-size: 1.8rem; }
     .hospoda span { font-size: 1.6rem; }
-    .zlodej span { font-size: 1.5rem; }
+    /* Přizpůsobení velikosti pro mobil, aby text nevylezl ven */
+    .zlodej span { font-size: 1.2rem; padding: 5px 15px; }
 }
