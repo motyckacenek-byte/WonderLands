@@ -38,11 +38,11 @@ body, html {
     align-items: center;
 }
 
-/* Samotný běžící pás */
+/* Samotný běžící pás (nepatrně zpomaleno kvůli přidání 6. karty) */
 .carousel-track {
     display: flex;
     width: max-content;
-    animation: scroll 35s linear infinite; 
+    animation: scroll 40s linear infinite; 
     will-change: transform; 
 }
 
@@ -56,7 +56,7 @@ body, html {
     100% { transform: translateX(-50%); } 
 }
 
-/* Skupina 5 karet */
+/* Skupina karet (nyní 6) */
 .slide-group {
     display: flex;
     gap: 50px; 
@@ -100,6 +100,7 @@ body, html {
 .portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
+.portal.zlodej::before  { background-image: url('zlodej.jpeg');  background-position: center 20%; }
 
 /* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší */
 .portal:hover::before {
@@ -203,7 +204,7 @@ body, html {
     100% { border-color: #fff; box-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c, inset 0 0 20px #cd4606; }
 }
 
-/* 4. FROSTPUNK (Vylepšená, nepřetržitá a hustší pára) */
+/* 4. FROSTPUNK */
 .frost span {
     font-family: 'Rajdhani', sans-serif; 
     font-size: 3rem;
@@ -211,7 +212,6 @@ body, html {
     text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
 
-/* Dva proudy páry pro neustálý a hustší efekt */
 .frost span::before,
 .frost span::after {
     content: 'FROSTPUNK'; 
@@ -223,15 +223,8 @@ body, html {
     opacity: 0;
 }
 
-/* První oblak páry */
-.frost:hover span::after {
-    animation: steam-rise 2s infinite linear;
-}
-
-/* Druhý oblak páry se zpožděním (aby se nepřetržitě doplňovaly) */
-.frost:hover span::before {
-    animation: steam-rise 2s infinite linear 1s;
-}
+.frost:hover span::after { animation: steam-rise 2s infinite linear; }
+.frost:hover span::before { animation: steam-rise 2s infinite linear 1s; }
 
 .frost:hover {
     border-color: #e0f7fa;
@@ -240,25 +233,10 @@ body, html {
 }
 
 @keyframes steam-rise {
-    0% { 
-        transform: translateY(0) scale(1); 
-        opacity: 0.9; 
-        text-shadow: 0 0 10px rgba(255,255,255,0.8); 
-        filter: blur(2px); 
-    }
-    50% { 
-        opacity: 0.6; 
-        text-shadow: 0 -15px 20px rgba(255,255,255,1), 0 -20px 25px rgba(255,255,255,0.8); 
-        filter: blur(6px); 
-    }
-    100% { 
-        transform: translateY(-60px) scale(1.6); 
-        opacity: 0; 
-        text-shadow: 0 -30px 30px rgba(255,255,255,0.5), 0 -40px 40px rgba(255,255,255,0.3); 
-        filter: blur(15px); 
-    }
+    0% { transform: translateY(0) scale(1); opacity: 0.9; text-shadow: 0 0 10px rgba(255,255,255,0.8); filter: blur(2px); }
+    50% { opacity: 0.6; text-shadow: 0 -15px 20px rgba(255,255,255,1), 0 -20px 25px rgba(255,255,255,0.8); filter: blur(6px); }
+    100% { transform: translateY(-60px) scale(1.6); opacity: 0; text-shadow: 0 -30px 30px rgba(255,255,255,0.5), 0 -40px 40px rgba(255,255,255,0.3); filter: blur(15px); }
 }
-
 @keyframes steam-frame {
     0% { box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8); }
     100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); }
@@ -285,6 +263,29 @@ body, html {
 @keyframes tavern-glow-frame {
     0% { border-color: #d2691e; box-shadow: 0 0 10px #d2691e, inset 0 0 15px #8b0000; }
     100% { border-color: #ffcc00; box-shadow: 0 0 25px #ff8c00, inset 0 0 25px #ff2200; }
+}
+
+/* 6. LOUPEŽNÍCI / LES */
+.zlodej span {
+    font-family: 'MedievalSharp', cursive; 
+    font-size: 2.3rem;
+    color: #b5d6a7; /* Bledě zelená barva lesa */
+    text-shadow: 2px 2px 5px rgba(0,0,0,1), 0 0 15px #114a24;
+}
+.zlodej:hover span {
+    animation: forest-glow 2s infinite alternate ease-in-out;
+}
+.zlodej:hover {
+    animation: forest-glow-frame 2s infinite alternate ease-in-out;
+}
+
+@keyframes forest-glow {
+    0% { text-shadow: 2px 2px 5px rgba(0,0,0,1), 0 0 15px #114a24; color: #b5d6a7; }
+    100% { text-shadow: 3px 3px 8px rgba(0,0,0,1), 0 0 25px #2e8b57, 0 0 40px #006400; color: #fff; }
+}
+@keyframes forest-glow-frame {
+    0% { border-color: #2e8b57; box-shadow: 0 0 10px #114a24, inset 0 0 15px #003300; }
+    100% { border-color: #3cb371; box-shadow: 0 0 25px #2e8b57, inset 0 0 30px #006400; }
 }
 
 /* ==========================================
@@ -317,4 +318,5 @@ body, html {
     .postapo span { font-size: 1.7rem; }
     .frost span { font-size: 1.8rem; }
     .hospoda span { font-size: 1.6rem; }
+    .zlodej span { font-size: 1.5rem; }
 }
