@@ -3,39 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WonderLands</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=MedievalSharp&family=Metamorphous&family=Rajdhani:wght@700&family=Stardos+Stencil:wght@700&display=swap" rel="stylesheet">
+    <title>WonderLands - Portál</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=MedievalSharp&family=Metamorphous&family=Rajdhani:wght@500;700&family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <h1 class="main-title">WONDERLANDS</h1>
+    <nav>
+        <div class="logo-area">
+            <a href="index.html" class="logo-link">
+                <div class="logo">Wonder<span>Lands</span></div>
+                <img src="wonderlands-logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'">
+            </a>
+            <button class="hamburger" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</button>
+        </div>
+        
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">Zpět na Portál</a>
+            <a href="pravidla.html">Pravidla</a>
+            <a href="info.html">Info</a>
+            <a href="akce.html">Akce</a>
+        </div>
+    </nav>
+
+    <h1 class="main-title">Vyberte svůj svět</h1>
 
     <main class="carousel-container">
         <div class="carousel-track">
-            
             <div class="slide-group">
-                <a href="fantasy-akce.html" class="portal medival"><span>FANTASY</span></a>
-                <a href="postapo-akce.html" class="portal postapo"><span>POSTAPO</span></a>
-                <a href="cyberpunk-akce.html" class="portal cyber"><span>CYBERPUNK</span></a>
-                <a href="frost-akce.html" class="portal frost"><span>FROSTPUNK</span></a>
-                <a href="hospoda-akce.html" class="portal hospoda"><span>KRČMA</span></a>
-                <a href="zlodej-akce.html" class="portal zlodej"><span>LOUPEŽNICKÝ LES</span></a>
+                <a href="medival.html" style="text-decoration: none;"><div class="portal medival"><span>Království Magie</span></div></a>
+                <a href="cyber.html" style="text-decoration: none;"><div class="portal cyber"><span>Neo-City 2077</span></div></a>
+                <a href="postapo.html" style="text-decoration: none;"><div class="portal postapo"><span>Pustina</span></div></a>
+                <a href="frost.html" style="text-decoration: none;"><div class="portal frost"><span>Generátor</span></div></a>
+                <a href="hospoda.html" style="text-decoration: none;"><div class="portal hospoda"><span>U Zlomeného džbánu</span></div></a>
+                <a href="zlodej.html" style="text-decoration: none;"><div class="portal zlodej"><span>Hluboký Hvozd</span></div></a>
             </div>
-
             <div class="slide-group">
-                <a href="fantasy-akce.html" class="portal medival"><span>FANTASY</span></a>
-                <a href="postapo-akce.html" class="portal postapo"><span>POSTAPO</span></a>
-                <a href="cyberpunk-akce.html" class="portal cyber"><span>CYBERPUNK</span></a>
-                <a href="frost-akce.html" class="portal frost"><span>FROSTPUNK</span></a>
-                <a href="hospoda-akce.html" class="portal hospoda"><span>KRČMA</span></a>
-                <a href="zlodej-akce.html" class="portal zlodej"><span>LOUPEŽNICKÝ LES</span></a>
+                <a href="medival.html" style="text-decoration: none;"><div class="portal medival"><span>Království Magie</span></div></a>
+                <a href="cyber.html" style="text-decoration: none;"><div class="portal cyber"><span>Neo-City 2077</span></div></a>
+                <a href="postapo.html" style="text-decoration: none;"><div class="portal postapo"><span>Pustina</span></div></a>
+                <a href="frost.html" style="text-decoration: none;"><div class="portal frost"><span>Generátor</span></div></a>
+                <a href="hospoda.html" style="text-decoration: none;"><div class="portal hospoda"><span>U Zlomeného džbánu</span></div></a>
+                <a href="zlodej.html" style="text-decoration: none;"><div class="portal zlodej"><span>Hluboký Hvozd</span></div></a>
             </div>
-
         </div>
     </main>
 
+    <div class="footer-label">WonderLands</div>
+    
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
