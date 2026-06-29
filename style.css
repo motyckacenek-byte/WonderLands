@@ -100,11 +100,12 @@ body, html {
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
 
-/* LOUPEŽNÍK: Maximální bezpečné oddálení fotky, aby bylo vidět co nejvíc těla i obličeje */
+/* LOUPEŽNÍK: Fotka je zmenšená (contain), aby se vlezla do rámečku celá bez ohledu na proporce. */
 .portal.zlodej::before  { 
     background-image: url('zlodej.jpeg');  
-    background-size: 100% auto; /* Odzoomováno na šířku, aby nedošlo k ořezu */
-    background-position: center 10%; /* Zacíleno na hlavu a tělo */
+    background-size: contain; /* Fotka se celá přizpůsobí rozměrům okna */
+    background-position: center center; /* Dokonalé vycentrování */
+    background-color: #0d0805; /* Tmavě hnědý podklad pro zamaskování prázdných míst */
 }
 
 /* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší - Všeobecný */
@@ -115,7 +116,7 @@ body, html {
 
 /* Speciální jemný zoom pro LOUPEŽNICKÝ LES */
 .portal.zlodej:hover::before {
-    transform: skewX(15deg) scale(1.03) translateX(-5px); 
+    transform: skewX(15deg) scale(1.05) translateX(-5px); 
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
