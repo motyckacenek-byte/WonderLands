@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RATALARP - Neo-City 2077</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=MedievalSharp&family=Metamorphous&family=Rajdhani:wght@500;700&family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo-area">
+            <a href="index.html" class="logo-link">
+                <div class="logo">RATA<span>LARP</span></div>
+                <img src="RATABLOGO.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'">
+            </a>
+            <button class="hamburger" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</button>
+        </div>
+        
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html">Zpět na Portál</a>
+            <a href="pravidla.html">Pravidla</a>
+            <a href="info.html">Info</a>
+            <a href="akce.html">Akce</a>
+        </div>
+    </nav>
+
+    <main class="container page-cyber">
+        <section class="wip-container">
+            <h1 class="wip-title">Neo-City 2077</h1>
+            <p class="wip-text">
+                SYSTEM ERROR: DATA_NOT_FOUND // 404_VOID
+            </p>
+            <p class="wip-loader">
+                <br>> Uploading data to the mainframe... [14%]<br>
+                Netrunneři právě hackují korporátní servery, aby tuto stránku zprovoznili. Na sekci se pracuje.
+            </p>
+            <a href="index.html" class="btn-primary" style="display: inline-block; margin-top: 30px; text-decoration: none; padding: 10px 20px; border: 1px solid #0fa; color: #0fa; font-family: 'Chakra Petch'; text-transform: uppercase;">BACK_TO_ROOT</a>
+        </section>
+    </main>
+
+    <div class="footer-label">RATAB, z.s.</div>
+    
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
