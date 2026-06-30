@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D Fantasy - WonderLands</title>
+    <title>Fantasy Realm - WonderLands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
         
         body {
             background-color: #050505;
-            /* Změna na temnější krvavě-rudý nádech místo fialové */
-            background-image: radial-gradient(circle at center, rgba(40, 10, 10, 0.7) 0%, rgba(5, 5, 5, 0.95) 100%), url('medival.jpeg');
+            /* ZDE JE NASAZEN TVŮJ NOVÝ OBRÁZEK: fantasyles.jpeg */
+            background-image: radial-gradient(circle at center, rgba(30, 10, 50, 0.6) 0%, rgba(5, 5, 5, 0.95) 100%), url('fantasyles.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -25,13 +25,13 @@
             overflow-x: hidden;
         }
 
-        /* Temně rudý posuvník */
+        /* Temný magický posuvník */
         ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #0a0505; }
-        ::-webkit-scrollbar-thumb { background: #7f1d1d; border-radius: 5px; border: 1px solid #b91c1c; }
-        ::-webkit-scrollbar-thumb:hover { background: #991b1b; }
+        ::-webkit-scrollbar-track { background: #0a0510; }
+        ::-webkit-scrollbar-thumb { background: #581c87; border-radius: 5px; border: 1px solid #a855f7; }
+        ::-webkit-scrollbar-thumb:hover { background: #7e22ce; }
 
-        /* --- LÉTAJÍCÍ D&D IKONY (POZADÍ) --- */
+        /* --- LÉTAJÍCÍ RUNY (POZADÍ) --- */
         .magic-runes {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -40,24 +40,26 @@
             overflow: hidden;
         }
         
-        .floating-icon {
+        .floating-rune {
             position: absolute;
-            color: rgba(212, 175, 55, 0.4); /* Zlato-bronzová */
-            text-shadow: 0 0 10px rgba(220, 38, 38, 0.5), 0 0 20px rgba(153, 27, 27, 0.8);
+            color: rgba(233, 213, 255, 0.6); 
+            text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7, 0 0 40px #7e22ce;
             animation: float-rune infinite linear;
             opacity: 0;
             user-select: none;
+            font-family: 'Cinzel', sans-serif;
         }
 
-        /* Rozmístění mečů, draků, kostek a štítů */
-        .floating-icon:nth-child(1) { left: 10%; font-size: 2.5rem; animation-duration: 20s; animation-delay: 0s; }
-        .floating-icon:nth-child(2) { left: 85%; font-size: 3rem; animation-duration: 25s; animation-delay: -5s; color: rgba(220, 38, 38, 0.3); } /* Rudý drak */
-        .floating-icon:nth-child(3) { left: 50%; font-size: 2rem; animation-duration: 15s; animation-delay: -2s; }
-        .floating-icon:nth-child(4) { left: 25%; font-size: 3.5rem; animation-duration: 28s; animation-delay: -10s; }
-        .floating-icon:nth-child(5) { left: 75%; font-size: 2.5rem; animation-duration: 22s; animation-delay: -12s; color: rgba(148, 163, 184, 0.4); } /* Ocelový štít */
-        .floating-icon:nth-child(6) { left: 35%; font-size: 2.2rem; animation-duration: 19s; animation-delay: -7s; }
-        .floating-icon:nth-child(7) { left: 65%; font-size: 3rem; animation-duration: 30s; animation-delay: -15s; }
+        /* Různé velikosti, pozice a rychlosti pro každou runu */
+        .floating-rune:nth-child(1) { left: 10%; font-size: 2rem; animation-duration: 18s; animation-delay: 0s; }
+        .floating-rune:nth-child(2) { left: 85%; font-size: 3.5rem; animation-duration: 25s; animation-delay: -5s; color: rgba(192, 132, 252, 0.4); }
+        .floating-rune:nth-child(3) { left: 50%; font-size: 1.5rem; animation-duration: 15s; animation-delay: -2s; }
+        .floating-rune:nth-child(4) { left: 25%; font-size: 4rem; animation-duration: 30s; animation-delay: -10s; color: rgba(147, 51, 234, 0.5); }
+        .floating-rune:nth-child(5) { left: 75%; font-size: 2.5rem; animation-duration: 22s; animation-delay: -12s; }
+        .floating-rune:nth-child(6) { left: 40%; font-size: 1.8rem; animation-duration: 19s; animation-delay: -7s; }
+        .floating-rune:nth-child(7) { left: 65%; font-size: 3rem; animation-duration: 28s; animation-delay: -15s; }
 
+        /* Animace: Stoupání vzhůru a pomalá rotace o 360 stupňů */
         @keyframes float-rune {
             0% { transform: translateY(110vh) rotate(0deg) scale(0.8); opacity: 0; }
             20% { opacity: 0.8; }
@@ -83,7 +85,7 @@
             font-size: 1rem;
             letter-spacing: 5px;
             text-transform: uppercase;
-            text-shadow: 0 0 10px #d4af37, 0 0 20px #b91c1c;
+            text-shadow: 0 0 10px #d4af37;
             animation: whisper 3s infinite alternate ease-in-out;
         }
 
@@ -96,67 +98,64 @@
             font-family: 'Metamorphous', cursive;
             font-size: 6rem;
             color: #ffffff;
-            text-shadow: 0 0 15px #b91c1c, 0 0 30px #991b1b, 0 0 60px #7f1d1d;
+            text-shadow: 0 0 20px #7e22ce, 0 0 40px #581c87, 0 0 80px #3b0764;
             letter-spacing: 12px;
             text-transform: uppercase;
             margin-bottom: 20px;
         }
 
-        /* --- DUBEOVÁ / ŽELEZNÁ DESKA (HLAVNÍ KONTEJNER) --- */
+        /* --- OBSIDIÁNOVÁ DESKA (HLAVNÍ KONTEJNER) --- */
         .grimoire-container {
             position: relative;
             max-width: 1200px;
             margin: 0 auto 50px;
             padding: 50px 80px;
-            background: rgba(20, 10, 10, 0.85); /* Tmavě hnědo-černá (taverna) */
-            border: 1px solid #7f1d1d;
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(185, 28, 28, 0.4);
+            background: rgba(15, 5, 20, 0.85);
+            border: 1px solid #3b0764;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(88, 28, 135, 0.5);
             z-index: 2;
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 50px;
         }
 
-        /* Železné kování v rozích */
         .grimoire-container::before, .grimoire-container::after {
             content: '';
             position: absolute;
             width: 40px; height: 40px;
-            border: 3px solid #d4af37;
-            box-shadow: 0 0 15px #b91c1c;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 15px #7e22ce;
             pointer-events: none;
         }
         .grimoire-container::before { top: -10px; left: -10px; border-right: none; border-bottom: none; }
         .grimoire-container::after { bottom: -10px; right: -10px; border-left: none; border-top: none; }
 
-        /* --- SYMBOLY PO STRANÁCH (BOJ vs MAGIE) --- */
+        /* --- ZÁŘÍCÍ RUNY NA OKRAJÍCH DESKY --- */
         .runic-border {
             position: absolute;
-            top: 30px;
-            bottom: 30px;
+            top: 20px;
+            bottom: 20px;
             width: 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.8rem;
-            color: rgba(212, 175, 55, 0.3);
-            text-shadow: 0 0 10px rgba(185, 28, 28, 0.5);
+            font-size: 1.5rem;
+            color: rgba(168, 85, 247, 0.4);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
             user-select: none;
         }
-        .runic-left { left: 15px; } /* Cesta bojovníka */
-        .runic-right { right: 15px; } /* Cesta stínů a magie */
+        .runic-left { left: 15px; }
+        .runic-right { right: 15px; }
 
         .runic-border span {
             transition: 0.3s;
             cursor: crosshair;
-            filter: grayscale(100%);
         }
         .runic-border span:hover {
             color: #ffffff;
-            filter: grayscale(0%);
-            text-shadow: 0 0 15px #d4af37, 0 0 30px #dc2626;
-            transform: scale(1.4);
+            text-shadow: 0 0 15px #c084fc, 0 0 30px #e9d5ff, 0 0 50px #a855f7;
+            transform: scale(1.5);
         }
 
         /* --- LEVÁ STRANA: PŘÍBĚH A LORE --- */
@@ -170,16 +169,15 @@
             position: relative;
         }
 
-        /* Oddělovač se zkříženými meči a štítem */
         .lore-section h2::after {
-            content: '⚔ 🛡 ⚔';
+            content: 'ᚲ ᛗ ᚨ ᚷ ᛁ ᚨ ᚲ';
             display: block;
-            font-size: 1.5rem;
-            color: #b91c1c;
+            font-size: 1.2rem;
+            color: #a855f7;
             margin-top: 15px;
-            letter-spacing: 20px;
-            text-indent: 20px;
-            text-shadow: 0 0 15px #991b1b;
+            letter-spacing: 15px;
+            text-indent: 15px;
+            text-shadow: 0 0 15px #7e22ce;
         }
 
         .lore-text {
@@ -195,13 +193,13 @@
             line-height: 0.8;
             padding-right: 15px;
             padding-top: 5px;
-            color: #d4af37; /* Zlatá iniciála */
-            text-shadow: 2px 2px 5px #000, 0 0 20px #b91c1c;
+            color: #a855f7;
+            text-shadow: 2px 2px 5px #000, 0 0 20px #7e22ce;
         }
 
         .lore-text p { margin-bottom: 25px; }
 
-        /* --- PRAVÁ STRANA: Cechovní Karty (INFO) --- */
+        /* --- PRAVÁ STRANA: MAGICKÉ KRYSTALY (INFO) --- */
         .info-section {
             display: flex;
             flex-direction: column;
@@ -211,49 +209,50 @@
 
         .crystal-card {
             position: relative;
-            background: linear-gradient(135deg, #271010 0%, #0a0202 100%);
+            background: linear-gradient(135deg, #1a0b2e 0%, #0a0216 100%);
             padding: 25px 20px 25px 60px;
-            border: 1px solid #7f1d1d;
-            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            border: 1px solid #3b0764;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
             transition: 0.4s;
             cursor: default;
         }
 
         .crystal-card:hover {
-            border-color: #d4af37;
-            box-shadow: inset 0 0 20px rgba(185, 28, 28, 0.3);
+            border-color: #a855f7;
+            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.2);
             transform: scale(1.02) translateX(-5px);
         }
 
-        /* Dračí / Ohnivá jiskra místo krystalu */
         .crystal-card::before {
-            content: '♦';
-            font-size: 1.5rem;
-            color: #b91c1c;
+            content: '';
             position: absolute;
             left: 20px;
             top: 50%;
-            transform: translateY(-50%);
-            text-shadow: 0 0 10px #dc2626;
+            transform: translateY(-50%) rotate(45deg);
+            width: 15px;
+            height: 15px;
+            background: #000;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 10px #a855f7;
             transition: 0.4s;
         }
 
         .crystal-card:hover::before {
-            color: #d4af37;
-            text-shadow: 0 0 20px #fcd34d;
-            transform: translateY(-50%) rotate(180deg) scale(1.2);
+            background: #a855f7;
+            box-shadow: 0 0 20px #e9d5ff;
+            transform: translateY(-50%) rotate(225deg);
         }
 
         .crystal-card h3 {
             font-family: 'Metamorphous', cursive;
-            color: #fcd34d;
+            color: #e9d5ff;
             font-size: 1.2rem;
             margin-bottom: 5px;
         }
 
         .crystal-card p {
             font-size: 0.95rem;
-            color: #cbd5e1;
+            color: #94a3b8;
         }
 
         /* --- TLAČÍTKO ZPĚT (PORTÁL) --- */
@@ -268,13 +267,13 @@
             display: inline-block;
             padding: 15px 50px;
             background: transparent;
-            color: #fcd34d;
+            color: #e9d5ff;
             font-family: 'Metamorphous', cursive;
             font-size: 1.5rem;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 4px;
-            border: 2px solid #b91c1c;
+            border: 2px solid #7e22ce;
             position: relative;
             overflow: hidden;
             transition: 0.4s;
@@ -284,14 +283,14 @@
             content: '';
             position: absolute;
             top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(185, 28, 28, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), transparent);
             transition: 0.5s;
         }
 
         .btn-portal:hover {
-            background: rgba(69, 10, 10, 0.8);
-            box-shadow: 0 0 30px #b91c1c, inset 0 0 20px #dc2626;
-            border-color: #d4af37;
+            background: rgba(88, 28, 135, 0.5);
+            box-shadow: 0 0 30px #7e22ce, inset 0 0 20px #a855f7;
+            border-color: #c084fc;
             text-shadow: 0 0 10px #fff;
         }
 
@@ -308,15 +307,15 @@
 </head>
 <body>
 
-    <!-- Animované D&D symboly na pozadí -->
+    <!-- Animované levitující runy na pozadí -->
     <div class="magic-runes">
-        <div class="floating-icon">⚔</div> <!-- Zkřížené meče -->
-        <div class="floating-icon">🐉</div> <!-- Drak -->
-        <div class="floating-icon">🎲</div> <!-- Kostka -->
-        <div class="floating-icon">🏹</div> <!-- Luk -->
-        <div class="floating-icon">🛡</div> <!-- Štít -->
-        <div class="floating-icon">🪄</div> <!-- Hůlka -->
-        <div class="floating-icon">🪓</div> <!-- Sekera -->
+        <div class="floating-rune">ᚠ</div>
+        <div class="floating-rune">ᚨ</div>
+        <div class="floating-rune">ᚱ</div>
+        <div class="floating-rune">ᛟ</div>
+        <div class="floating-rune">ᚷ</div>
+        <div class="floating-rune">ᛉ</div>
+        <div class="floating-rune">ᚺ</div>
     </div>
 
     <header>
@@ -326,48 +325,47 @@
 
     <main class="grimoire-container">
         
-        <!-- Levý sloup - Cesta Bojovníka -->
-        <div class="runic-border runic-left" title="Cesta Oceli">
-            <span>⚔</span><span>🛡</span><span>🪓</span><span>🗡</span><span>🐎</span><span>🩸</span>
+        <!-- Levý runový sloup -->
+        <div class="runic-border runic-left">
+            <span>ᚠ</span><span>ᚨ</span><span>ᚱ</span><span>ᚲ</span><span>ᚷ</span><span>ᚹ</span><span>ᚺ</span><span>ᚾ</span><span>ᛁ</span><span>ᛃ</span>
         </div>
 
-        <!-- Pravý sloup - Cesta Magie a Stínů -->
-        <div class="runic-border runic-right" title="Cesta Stínů">
-            <span>🪄</span><span>📖</span><span>🏹</span><span>🧪</span><span>👁</span><span>🔮</span>
+        <!-- Pravý runový sloup -->
+        <div class="runic-border runic-right">
+            <span>ᛇ</span><span>ᛈ</span><span>ᛉ</span><span>ᛊ</span><span>ᛏ</span><span>ᛒ</span><span>ᛖ</span><span>ᛗ</span><span>ᛚ</span><span>ᛟ</span>
         </div>
         
         <section class="lore-section">
-            <h2>Dobrodružství Čeká</h2>
+            <h2>Prastaré Letopisy</h2>
             <div class="lore-text">
-                <p>Osedlej koně, naostři čepel a připrav si kouzla, dobrodruhu. Vítej ve světě, kde hod dvacetistěnnou kostkou rozhoduje o životě a smrti. Ať už jsi zuřivý barbar s obouruční sekerou, lstivý zloděj skrývající se ve stínech, nebo moudrý mág studující prastaré grimoáry, tento svět potřebuje tvé schopnosti.</p>
-                <p>Temnota z podzemních dungeonů se pomalu plíží na povrch. Páni Jeskyní vypráví zkazky o probuzených dracích a zapomenutých pokladech čekajících na ty, kteří mají dostatek odvahy. Sestav svou družinu, vyber si svou rasu a povolání, a vyraz vstříc svému osudu!</p>
+                <p>Vítej ve světě, kde magie dýchá skrze kořeny prastarých stromů a kde ocel zvoní v rytmu prastarých chorálů. Ne každý, kdo vstoupí do těchto hvozdů, se vrátí stejný. Království padla, draci se probouzejí z věčného spánku a v temných slujích se formuje zlo, které nezná slitování.</p>
+                <p>Tvůj meč, tvoje magie nebo tvá lstivost určí, zda tvé jméno bude vytesáno do zlatých síní hrdinů, nebo zapomenuto v prachu dějin. Vyber si svou rasu, slož přísahu své frakci a připrav se na bitvu, o které budou bardi zpívat ještě celá staletí.</p>
             </div>
         </section>
 
-        <!-- Informační "Cechovní" karty -->
         <aside class="info-section">
             <div class="crystal-card">
-                <h3>Třídy a Povolání</h3>
-                <p>Bojovník, Hraničář, Zloděj, Klerik, Čaroděj a další. Vyber si svou cestu.</p>
+                <h3>Úroveň Akce</h3>
+                <p>Tvrdý LARP / Dřevárny s lehkou magií</p>
             </div>
             <div class="crystal-card">
-                <h3>Bojový Systém</h3>
-                <p>Zakládáme se na D&D mechanikách přenesených do reálného boje. Útoky, úhyby a speciální skilly.</p>
+                <h3>Povolená Výzbroj</h3>
+                <p>Měkčené zbraně, luky s bezpečným nátahem, štíty (max 100cm).</p>
             </div>
             <div class="crystal-card">
-                <h3>Systém Magie</h3>
-                <p>Svitek, mana, nebo pakt s démonem? Kouzla vyžadují specifické rekvizity a roleplay.</p>
+                <h3>Pravidla Magie</h3>
+                <p>Základní zaříkadla a runová magie povolena. Přečtěte si kodex mágů.</p>
             </div>
             <div class="crystal-card">
-                <h3>Družina (Party)</h3>
-                <p>Ideální skupiny tvoří 4-6 hráčů. Tank, Healer, Damage Dealer. Spolupracujte!</p>
+                <h3>Lokace Bojiště</h3>
+                <p>Severní Hvozd a Ruiny staré pevnosti.</p>
             </div>
         </aside>
 
     </main>
 
     <div class="portal-btn-container">
-        <a href="index.html" class="btn-portal">Návrat do Taverny</a>
+        <a href="index.html" class="btn-portal">Návrat k Portálům</a>
     </div>
 
 </body>
