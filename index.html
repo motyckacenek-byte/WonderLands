@@ -74,5 +74,18 @@
         </div>
     </section>
 
+    <!-- NOVÝ JAVASCRIPT PRO EFEKT ROLOVÁNÍ -->
+    <script>
+        const mainTitle = document.querySelector('.main-title');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Práh 50px pro zapnutí efektu
+                mainTitle.classList.add('scrolled');
+            } else {
+                mainTitle.classList.remove('scrolled');
+            }
+        });
+    </script>
+
 </body>
 </html>
