@@ -13,19 +13,15 @@ body, html {
     overflow-y: auto; 
 }
 
-/* Korporátní nadpis */
+/* Korporátní nadpis - Upraveno na přirozené obtékání */
 .main-title {
-    position: absolute; 
-    top: 5%; 
     width: 100%; 
     text-align: center;
     color: white; 
     font-size: 3rem; 
     letter-spacing: 15px; 
     font-weight: 900;     
-    z-index: 10;
-    pointer-events: none; 
-    padding: 10px 0;
+    padding: 6vh 0 2vh 0;
     text-transform: uppercase;
 }
 
@@ -33,11 +29,10 @@ body, html {
 .carousel-container {
     width: 100vw; 
     height: 70vh; 
-    margin-top: 18vh; 
     overflow: hidden; 
     display: flex;
     align-items: center;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 
 /* Samotný běžící pás */
@@ -280,7 +275,7 @@ body, html {
 
 
 /* ==========================================
-   SEKCE O AUTOROVI (STEVIE)
+   SEKCE O AUTOROVI A PROMO (STEVIE)
    ========================================== */
 .author-section {
     width: 100%;
@@ -290,7 +285,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px 20px;
+    padding: 80px 20px;
     color: white;
 }
 
@@ -369,6 +364,14 @@ body, html {
     margin-bottom: 15px;
 }
 
+.author-text strong {
+    color: #0fa;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 .author-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -414,12 +417,12 @@ body, html {
     .main-title {
         font-size: 1.8rem;
         letter-spacing: 5px;
-        top: 2%;
+        padding-top: 4vh;
     }
     
     .carousel-container {
         height: 60vh;
-        margin-top: 15vh;
+        margin-top: 2vh;
     }
     
     .portal {
