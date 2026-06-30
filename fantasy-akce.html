@@ -3,199 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Svět - WonderLands</title>
+    <title>Fantasy Realm - WonderLands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Arial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- ZÁKLADNÍ NASTAVENÍ A POSUVNÍK --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            /* Tady to načte tvůj obrázek z hlavní stránky a roztáhne ho přes celý web */
-            background-image: linear-gradient(rgba(5, 5, 5, 0.8), rgba(15, 5, 25, 0.9)), url('medival.jpeg');
+            background-color: #050505;
+            background-image: radial-gradient(circle at center, rgba(30, 10, 50, 0.6) 0%, rgba(5, 5, 5, 0.95) 100%), url('medival.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #e2e8f0;
-            font-family: 'Arial', sans-serif;
+            color: #d4cfc5;
+            font-family: 'Cinzel', serif; /* Změna fontu pro texty na filmovější */
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Temný fantasy posuvník */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0510; }
+        ::-webkit-scrollbar-thumb { background: #581c87; border-radius: 5px; border: 1px solid #a855f7; }
+        ::-webkit-scrollbar-thumb:hover { background: #7e22ce; }
+
+        /* --- MAGICKÉ SVĚTLUŠKY (POZADÍ) --- */
+        .magic-orbs {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: #c084fc;
+            box-shadow: 0 0 20px 10px rgba(168, 85, 247, 0.4);
+            animation: float-up infinite linear;
+            opacity: 0;
+        }
+        .orb:nth-child(1) { left: 15%; width: 5px; height: 5px; animation-duration: 15s; animation-delay: 0s; }
+        .orb:nth-child(2) { left: 85%; width: 8px; height: 8px; animation-duration: 20s; animation-delay: -5s; background: #e9d5ff; }
+        .orb:nth-child(3) { left: 50%; width: 4px; height: 4px; animation-duration: 12s; animation-delay: -2s; }
+        .orb:nth-child(4) { left: 30%; width: 6px; height: 6px; animation-duration: 18s; animation-delay: -8s; }
+        .orb:nth-child(5) { left: 70%; width: 7px; height: 7px; animation-duration: 25s; animation-delay: -12s; background: #9333ea; }
+
+        @keyframes float-up {
+            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
         /* --- HLAVIČKA --- */
         header {
+            position: relative;
             text-align: center;
-            padding: 80px 20px 40px;
+            padding: 100px 20px 40px;
+            z-index: 2;
+        }
+
+        .stewie-notice {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4af37; /* Zlatá */
+            font-family: 'Metamorphous', cursive;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #d4af37;
+            animation: whisper 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes whisper {
+            0% { opacity: 0.3; transform: translateX(-50%) translateY(0); filter: blur(1px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(-5px); filter: blur(0); }
         }
 
         h1 {
             font-family: 'Metamorphous', cursive;
-            font-size: 5rem;
-            color: #e9d5ff;
-            text-shadow: 0 0 15px #9333ea, 0 0 30px #581c87;
-            letter-spacing: 8px;
+            font-size: 6rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px #7e22ce, 0 0 40px #581c87, 0 0 80px #3b0764;
+            letter-spacing: 12px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .stewie-notice {
-            color: #a855f7;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            animation: pulse 2s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; text-shadow: 0 0 5px #7e22ce; }
-            100% { opacity: 1; text-shadow: 0 0 15px #a855f7; }
-        }
-
-        /* --- HLAVNÍ OBSAH --- */
-        .container {
+        /* --- OBSIDIÁNOVÁ DESKA (HLAVNÍ KONTEJNER) --- */
+        .grimoire-container {
+            position: relative;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0 auto 50px;
+            padding: 50px;
+            background: rgba(15, 5, 20, 0.85);
+            border: 1px solid #3b0764;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(88, 28, 135, 0.5);
+            z-index: 2;
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Levý sloupec širší, pravý užší */
-            gap: 30px;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
         }
 
-        /* Poloprůhledné panely */
-        .panel {
-            background: rgba(30, 10, 50, 0.4);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            backdrop-filter: blur(10px); /* Efekt zamlženého skla */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
+        /* Ozdobné magické rohy pro desku */
+        .grimoire-container::before, .grimoire-container::after {
+            content: '';
+            position: absolute;
+            width: 40px; height: 40px;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 15px #7e22ce;
+            pointer-events: none;
         }
+        .grimoire-container::before { top: -10px; left: -10px; border-right: none; border-bottom: none; }
+        .grimoire-container::after { bottom: -10px; right: -10px; border-left: none; border-top: none; }
 
-        .panel:hover {
-            border-color: rgba(168, 85, 247, 0.8);
-            box-shadow: 0 10px 40px rgba(147, 51, 234, 0.3);
-        }
-
-        h2 {
+        /* --- LEVÁ STRANA: PŘÍBĚH A LORE --- */
+        .lore-section h2 {
             font-family: 'Metamorphous', cursive;
-            color: #c084fc;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #7e22ce;
-            padding-bottom: 10px;
-            display: inline-block;
+            color: #d4af37; /* Zlatá nadpisy */
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px #000;
+            position: relative;
         }
 
-        p {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #cbd5e1;
-        }
-
-        /* --- KARTIČKY V PRAVÉM SLOUPCI --- */
-        .stats-grid {
-            display: grid;
-            gap: 15px;
-        }
-
-        .stat-card {
-            background: rgba(0, 0, 0, 0.6);
-            border-left: 4px solid #a855f7;
-            padding: 15px 20px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateX(10px);
-            background: rgba(147, 51, 234, 0.2);
-            border-color: #e9d5ff;
-        }
-
-        .stat-card strong {
+        /* Zlatý oddělovač pod nadpisem */
+        .lore-section h2::after {
+            content: '♦';
             display: block;
+            font-size: 1rem;
+            color: #a855f7;
+            margin-top: 10px;
+            letter-spacing: 50px;
+            text-indent: 50px; /* Vycentruje diamant */
+            position: relative;
+        }
+        .lore-section h2::before {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 20%; width: 60%; height: 1px;
+            background: linear-gradient(90deg, transparent, #a855f7, transparent);
+        }
+
+        .lore-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        /* Velká iluminovaná iniciála (Drop Cap) */
+        .lore-text p:first-of-type::first-letter {
+            font-family: 'Metamorphous', cursive;
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            color: #a855f7;
+            text-shadow: 2px 2px 5px #000, 0 0 20px #7e22ce;
+        }
+
+        .lore-text p { margin-bottom: 25px; }
+
+        /* --- PRAVÁ STRANA: MAGICKÉ KRYSTALY (INFO) --- */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding-top: 20px;
+        }
+
+        .crystal-card {
+            position: relative;
+            background: linear-gradient(135deg, #1a0b2e 0%, #0a0216 100%);
+            padding: 25px 20px 25px 60px;
+            border: 1px solid #3b0764;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: 0.4s;
+            cursor: default;
+        }
+
+        .crystal-card:hover {
+            border-color: #a855f7;
+            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.2);
+            transform: scale(1.02) translateX(-5px);
+        }
+
+        /* Samotný zářící krystal vedle textu */
+        .crystal-card::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 15px;
+            height: 15px;
+            background: #000;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 10px #a855f7;
+            transition: 0.4s;
+        }
+
+        .crystal-card:hover::before {
+            background: #a855f7;
+            box-shadow: 0 0 20px #e9d5ff;
+            transform: translateY(-50%) rotate(225deg);
+        }
+
+        .crystal-card h3 {
+            font-family: 'Metamorphous', cursive;
             color: #e9d5ff;
             font-size: 1.2rem;
             margin-bottom: 5px;
-            font-family: 'Metamorphous', cursive;
         }
 
-        /* --- SPODNÍ NAVIGACE --- */
-        .footer-nav {
+        .crystal-card p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        /* --- TLAČÍTKO ZPĚT (PORTÁL) --- */
+        .portal-btn-container {
             text-align: center;
-            padding: 50px 20px 80px;
+            padding-bottom: 80px;
+            z-index: 2;
+            position: relative;
         }
 
-        .btn-back {
+        .btn-portal {
             display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #581c87, #9333ea);
-            color: white;
+            padding: 15px 50px;
+            background: transparent;
+            color: #e9d5ff;
+            font-family: 'Metamorphous', cursive;
+            font-size: 1.5rem;
             text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            letter-spacing: 2px;
             text-transform: uppercase;
-            border-radius: 30px;
-            border: 2px solid #c084fc;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
+            letter-spacing: 4px;
+            border: 2px solid #7e22ce;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
         }
 
-        .btn-back:hover {
-            background: linear-gradient(45deg, #7e22ce, #a855f7);
-            box-shadow: 0 0 30px #c084fc;
-            transform: scale(1.05);
+        /* Magický záblesk při najetí na tlačítko */
+        .btn-portal::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), transparent);
+            transition: 0.5s;
         }
 
-        /* --- RESPONZIVITA (PRO MOBILY) --- */
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr; /* Na mobilu hodí sloupce pod sebe */
-            }
-            h1 { font-size: 3rem; }
+        .btn-portal:hover {
+            background: rgba(88, 28, 135, 0.5);
+            box-shadow: 0 0 30px #7e22ce, inset 0 0 20px #a855f7;
+            border-color: #c084fc;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        .btn-portal:hover::before { left: 100%; }
+
+        /* --- RESPONZIVITA (MOBILY) --- */
+        @media (max-width: 960px) {
+            h1 { font-size: 3.5rem; letter-spacing: 5px; }
+            .grimoire-container { grid-template-columns: 1fr; padding: 30px 20px; }
+            .grimoire-container::before, .grimoire-container::after { display: none; } /* Na mobilu schováme rohy pro čistotu */
+            .lore-text p:first-of-type::first-letter { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Animované světlušky na pozadí -->
+    <div class="magic-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
     <header>
+        <div class="stewie-notice">~ Na tom se pracuje Stewie ~</div>
         <h1>Fantasy</h1>
-        <p class="stewie-notice">na tom se pracuje Stewie</p>
     </header>
 
-    <main class="container">
-        <!-- Levý velký sloupec pro příběh -->
-        <div class="panel">
-            <h2>Příběh Frakce</h2>
-            <p>Vítej ve světě, kde magie proudí v žilách samotné země. Starověké lesy skrývají tajemství předků a na vrcholcích hor sídlí draci střežící prastaré poklady. Ti, kdo vstoupí do tohoto světa, musí prokázat svou odvahu, neboť stíny se prodlužují a temnota na obzoru sílí.</p>
-            <p>Zde můžeš napsat podrobnější lore o tom, co se na Fantasy sekci bude dít, jaká jsou pravidla, nebo co si mají hráči přinést za kostýmy.</p>
-        </div>
-
-        <!-- Pravý užší sloupec pro rychlé info -->
-        <div class="panel">
-            <h2>Informace</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <strong>Obtížnost</strong>
-                    Pro začátečníky i pokročilé
-                </div>
-                <div class="stat-card">
-                    <strong>Zbraně</strong>
-                    Měkčené meče, luky, magie
-                </div>
-                <div class="stat-card">
-                    <strong>Lokace</strong>
-                    Severní hradiska
-                </div>
+    <main class="grimoire-container">
+        
+        <!-- Levá část s příběhem -->
+        <section class="lore-section">
+            <h2>Prastaré Letopisy</h2>
+            <div class="lore-text">
+                <p>Vítej ve světě, kde magie dýchá skrze kořeny prastarých stromů a kde ocel zvoní v rytmu prastarých chorálů. Ne každý, kdo vstoupí do těchto hvozdů, se vrátí stejný. Království padla, draci se probouzejí z věčného spánku a v temných slujích se formuje zlo, které nezná slitování.</p>
+                <p>Tvůj meč, tvoje magie nebo tvá lstivost určí, zda tvé jméno bude vytesáno do zlatých síní hrdinů, nebo zapomenuto v prachu dějin. Vyber si svou rasu, slož přísahu své frakci a připrav se na bitvu, o které budou bardi zpívat ještě celá staletí.</p>
             </div>
-        </div>
+        </section>
+
+        <!-- Pravá část s krystalickými informacemi -->
+        <aside class="info-section">
+            <div class="crystal-card">
+                <h3>Úroveň Akce</h3>
+                <p>Tvrdý LARP / Dřevárny s lehkou magií</p>
+            </div>
+            <div class="crystal-card">
+                <h3>Povolená Výzbroj</h3>
+                <p>Měkčené zbraně, luky s bezpečným nátahem, štíty (max 100cm).</p>
+            </div>
+            <div class="crystal-card">
+                <h3>Pravidla Magie</h3>
+                <p>Základní zaříkadla a runová magie povolena. Přečtěte si kodex mágů.</p>
+            </div>
+            <div class="crystal-card">
+                <h3>Lokace Bojiště</h3>
+                <p>Severní Hvozd a Ruiny staré pevnosti.</p>
+            </div>
+        </aside>
+
     </main>
 
-    <div class="footer-nav">
-        <a href="index.html" class="btn-back">⬅ Zpět na portály</a>
+    <div class="portal-btn-container">
+        <a href="index.html" class="btn-portal">Návrat k Portálům</a>
     </div>
 
 </body>
