@@ -6,114 +6,16 @@
 
 body, html { 
     width: 100%; 
-    min-height: 100vh; 
+    height: 100%; 
     background: #050505; 
     font-family: 'Arial Black', 'Arial', sans-serif; 
-    overflow-x: hidden; 
+    overflow: hidden; 
 }
 
-/* ==========================================
-   ZÁKLADNÍ ROZLOŽENÍ A NAVIGACE (WONDERLANDS)
-   ========================================== */
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 100;
-}
-
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo-link {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-
-.logo span {
-    color: #a855f7;
-}
-
-.nav-logo {
-    height: 40px;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s;
-}
-
-.nav-menu a:hover {
-    color: #a855f7;
-}
-
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.footer-label {
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    z-index: 10;
-}
-
-@media (max-width: 768px) {
-    .hamburger { display: block; }
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        padding: 20px 0;
-        text-align: center;
-    }
-    .nav-menu.active { display: flex; }
-}
-
-/* ==========================================
-   HLAVNÍ STRÁNKA S PORTÁLY (BĚŽÍCÍ PÁS)
-   ========================================== */
-
+/* Korporátní nadpis */
 .main-title {
     position: absolute; 
-    top: 10%; 
+    top: 5%; 
     width: 100%; 
     text-align: center;
     color: white; 
@@ -126,6 +28,7 @@ nav {
     text-transform: uppercase;
 }
 
+/* Hlavní okno pro běžící pás */
 .carousel-container {
     width: 100vw; 
     height: 70vh; 
@@ -135,6 +38,7 @@ nav {
     align-items: center;
 }
 
+/* Samotný běžící pás */
 .carousel-track {
     display: flex;
     width: max-content;
@@ -142,13 +46,17 @@ nav {
     will-change: transform; 
 }
 
-.carousel-track:hover { animation-play-state: paused; }
+.carousel-track:hover {
+    animation-play-state: paused;
+}
 
+/* Dokonalá smyčka */
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); } 
 }
 
+/* Skupina 6 karet */
 .slide-group {
     display: flex;
     gap: 50px; 
@@ -156,6 +64,7 @@ nav {
     flex: 0 0 auto; 
 }
 
+/* Jednotlivá karta */
 .portal {
     flex: 0 0 380px; 
     height: 65vh; 
@@ -168,6 +77,7 @@ nav {
     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
+/* ZÁKLADNÍ Napozicování pozadí */
 .portal::before {
     content: ''; 
     position: absolute; 
@@ -181,23 +91,35 @@ nav {
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* ==========================================
+   FOTKY A JEJICH PŘESNÉ POZICE
+   ========================================== */
 .portal.medival::before { background-image: url('medival.jpeg'); background-position: center 25%; } 
 .portal.hospoda::before { background-image: url('hospoda.jpeg'); background-position: center 25%; } 
 .portal.frost::before   { background-image: url('frost.jpeg');   background-position: center 60%; }
 .portal.postapo::before { background-image: url('postapo.jpeg'); background-position: center 15%; } 
 .portal.cyber::before   { background-image: url('cyber.jpeg');   background-position: center 15%; }
-.portal.zlodej::before  { background-image: url('zlodej.png'); background-size: cover; background-position: center 5%; }
 
+/* LOUPEŽNÍK */
+.portal.zlodej::before  { 
+    background-image: url('zlodej.png');  
+    background-size: cover; 
+    background-position: center 5%; 
+}
+
+/* FILMOVÝ EFEKT POHYBU ("Ken Burns") při najetí myší - Všeobecný */
 .portal:hover::before {
     transform: skewX(15deg) scale(1.15) translateX(-15px); 
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
+/* Speciální jemný zoom pro LOUPEŽNICKÝ LES */
 .portal.zlodej:hover::before {
     transform: skewX(15deg) scale(1.08) translateX(-5px); 
     transition: transform 8s cubic-bezier(0.1, 1, 0.3, 1);
 }
 
+/* ZÁKLADNÍ NASTAVENÍ TEXTU */
 .portal span { 
     position: absolute; 
     bottom: 8%; 
@@ -213,21 +135,44 @@ nav {
     white-space: nowrap;
 }
 
-.portal:hover span { opacity: 1; }
+.portal:hover span { 
+    opacity: 1; 
+}
 
-/* -- Magie -- */
-.medival span { font-family: 'Metamorphous', cursive; font-size: 2.5rem; color: #e9d5ff; text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87; letter-spacing: 5px; }
-.medival:hover span { animation: rune-pulse 1.5s infinite alternate ease-in-out; }
-.medival:hover { border-color: #a855f7; box-shadow: 0 0 15px #9333ea, inset 0 0 25px rgba(147, 51, 234, 0.6); }
+/* ==========================================
+   SPOLEČNÉ EFEKTY PRO NÁPISY I RÁMEČKY
+   ========================================== */
+
+/* 1. FANTASY (Magické fialové runy) */
+.medival span {
+    font-family: 'Metamorphous', cursive; /* Runový vzhled */
+    font-size: 2.5rem;
+    color: #e9d5ff; /* Velmi světle fialová */
+    text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87;
+    letter-spacing: 5px;
+}
+.medival:hover span {
+    animation: rune-pulse 1.5s infinite alternate ease-in-out;
+}
+.medival:hover {
+    border-color: #a855f7;
+    box-shadow: 0 0 15px #9333ea, inset 0 0 25px rgba(147, 51, 234, 0.6);
+}
+
 @keyframes rune-pulse {
     0% { text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87; color: #e9d5ff; }
     100% { text-shadow: 0 0 15px #c084fc, 0 0 30px #a855f7, 0 0 50px #7e22ce; color: #ffffff; }
 }
 
-/* -- Cyberpunk -- */
-.cyber span { font-family: 'Chakra Petch', sans-serif; font-size: 2.5rem; color: #fff; }
+/* 2. CYBERPUNK */
+.cyber span {
+    font-family: 'Chakra Petch', sans-serif; 
+    font-size: 2.5rem;
+    color: #fff;
+}
 .cyber:hover span { animation: neon-flicker 1.5s infinite alternate; }
 .cyber:hover { animation: neon-flicker-frame 1.5s infinite alternate; }
+
 @keyframes neon-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0fa, 0 0 40px #0fa, 0 0 80px #0fa; }
     20%, 24%, 55% { text-shadow: none; }
@@ -237,10 +182,15 @@ nav {
     20%, 24%, 55% { border-color: rgba(255,255,255,0.1); box-shadow: none; }
 }
 
-/* -- Postapo -- */
-.postapo span { font-family: 'Stardos Stencil', system-ui; font-size: 2.6rem; color: #fff; }
+/* 3. POSTAPO */
+.postapo span {
+    font-family: 'Stardos Stencil', system-ui; 
+    font-size: 2.6rem;
+    color: #fff;
+}
 .postapo:hover span { animation: fire-burn 0.15s infinite alternate; }
 .postapo:hover { animation: fire-burn-frame 0.15s infinite alternate; }
+
 @keyframes fire-burn {
     0% { text-shadow: 0 0 5px #fefcc9, 1px -2px 3px #feec85, -2px -4px 5px #ffae34, 2px -8px 8px #ec760c, -1px -12px 10px #cd4606; }
     100% { text-shadow: 0 0 5px #fefcc9, -1px -3px 4px #feec85, 2px -5px 6px #ffae34, -2px -10px 10px #ec760c, 1px -14px 12px #cd4606; }
@@ -250,14 +200,31 @@ nav {
     100% { border-color: #fff; box-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c, inset 0 0 20px #cd4606; }
 }
 
-/* -- Frostpunk -- */
-.frost span { font-family: 'Rajdhani', sans-serif; font-size: 3rem; color: #e0f7fa; text-shadow: 0 0 10px rgba(255,255,255,0.8); }
-.frost span::before, .frost span::after {
-    content: 'FROSTPUNK'; position: absolute; top: 0; left: 0; color: transparent; pointer-events: none; opacity: 0;
+/* 4. FROSTPUNK */
+.frost span {
+    font-family: 'Rajdhani', sans-serif; 
+    font-size: 3rem;
+    color: #e0f7fa; 
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+.frost span::before,
+.frost span::after {
+    content: 'FROSTPUNK'; 
+    position: absolute;
+    top: 0; 
+    left: 0;
+    color: transparent;
+    pointer-events: none;
+    opacity: 0;
 }
 .frost:hover span::after { animation: steam-rise 2s infinite linear; }
 .frost:hover span::before { animation: steam-rise 2s infinite linear 1s; }
-.frost:hover { border-color: #e0f7fa; box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8); animation: steam-frame 2s infinite ease-out; }
+.frost:hover {
+    border-color: #e0f7fa;
+    box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8);
+    animation: steam-frame 2s infinite ease-out;
+}
+
 @keyframes steam-rise {
     0% { transform: translateY(0) scale(1); opacity: 0.9; text-shadow: 0 0 10px rgba(255,255,255,0.8); filter: blur(2px); }
     50% { opacity: 0.6; text-shadow: 0 -15px 20px rgba(255,255,255,1), 0 -20px 25px rgba(255,255,255,0.8); filter: blur(6px); }
@@ -268,10 +235,16 @@ nav {
     100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); }
 }
 
-/* -- Hospoda -- */
-.hospoda span { font-family: 'MedievalSharp', cursive; font-size: 2.5rem; color: #ffcc00; text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000; }
+/* 5. HOSPODA / KRČMA */
+.hospoda span {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 2.5rem;
+    color: #ffcc00; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000;
+}
 .hospoda:hover span { animation: tavern-glow 1s infinite alternate ease-in-out; }
 .hospoda:hover { animation: tavern-glow-frame 1s infinite alternate ease-in-out; }
+
 @keyframes tavern-glow {
     0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px #d2691e, 0 0 20px #8b0000; }
     100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 20px #ff8c00, 0 0 45px #ff2200; }
@@ -281,65 +254,52 @@ nav {
     100% { border-color: #ffcc00; box-shadow: 0 0 25px #ff8c00, inset 0 0 25px #ff2200; }
 }
 
-/* -- Zloděj -- */
+/* 6. LOUPEŽNICKÝ LES */
 .zlodej span {
-    font-family: 'MedievalSharp', cursive; font-size: 1.6rem; color: #e6c280; 
+    font-family: 'MedievalSharp', cursive; 
+    font-size: 1.6rem; 
+    color: #e6c280; 
     background: linear-gradient(180deg, #5a361e 0%, #3e2312 50%, #261409 100%);
-    padding: 8px 25px; border: 3px solid #140a04; border-radius: 4px;
+    padding: 8px 25px;
+    border: 3px solid #140a04; 
+    border-radius: 4px;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8), inset 2px 2px 5px rgba(255,255,255,0.05);
 }
-.zlodej:hover span { color: #fff; box-shadow: 4px 4px 15px rgba(0,0,0,1), inset 0 0 15px #8b5a2b; }
-.zlodej:hover { border-color: #6b4226; box-shadow: 0 0 15px #4a2e1b, inset 0 0 30px rgba(49, 28, 15, 0.8); }
 
-
-/* ==========================================
-   STYLY PRO TEMATICKÉ PODSTRÁNKY (WIP)
-   ========================================== */
-.wip-container {
-    max-width: 800px;
-    margin: 10vh auto;
-    padding: 60px;
-    text-align: center;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(5px);
-    border-radius: 8px;
-    position: relative;
-    z-index: 2;
+.zlodej:hover span {
+    color: #fff;
+    box-shadow: 4px 4px 15px rgba(0,0,0,1), inset 0 0 15px #8b5a2b;
 }
-.wip-title { font-size: 3.5rem; margin-bottom: 20px; letter-spacing: 3px; text-transform: uppercase; }
-.wip-text { font-size: 1.3rem; line-height: 1.6; color: #ccc; }
-.wip-loader { margin-top: 40px; font-size: 1.1rem; font-style: italic; opacity: 0.8; color: #aaa; }
 
-.btn-primary:hover { box-shadow: 0 0 15px currentColor; background: rgba(255, 255, 255, 0.1); transition: 0.3s; }
-
-/* Jednotlivá témata pro WIP */
-.page-medival .wip-container { border: 2px solid #7e22ce; box-shadow: 0 0 30px rgba(126, 34, 206, 0.4), inset 0 0 20px rgba(88, 28, 135, 0.6); }
-.page-medival .wip-title { font-family: 'Metamorphous', cursive; color: #e9d5ff; text-shadow: 0 0 15px #a855f7, 0 0 30px #7e22ce; }
-
-.page-cyber .wip-container { border: 2px solid #0fa; box-shadow: 0 0 20px rgba(0, 255, 170, 0.3), inset 0 0 15px rgba(0, 255, 170, 0.2); border-radius: 0; }
-.page-cyber .wip-title { font-family: 'Chakra Petch', sans-serif; color: #fff; text-shadow: 0 0 10px #0fa, 0 0 20px #0fa; }
-.page-cyber .wip-text { font-family: 'Chakra Petch', sans-serif; color: #0fa; }
-
-.page-postapo .wip-container { border: 3px dashed #cd4606; box-shadow: 0 0 20px rgba(236, 118, 12, 0.4); }
-.page-postapo .wip-title { font-family: 'Stardos Stencil', system-ui; color: #fefcc9; text-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c; }
-
-.page-frost .wip-container { border: 1px solid #e0f7fa; background: rgba(224, 247, 250, 0.05); box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), inset 0 0 30px rgba(224, 247, 250, 0.2); }
-.page-frost .wip-title { font-family: 'Rajdhani', sans-serif; color: #e0f7fa; text-shadow: 0 0 15px #fff; }
-
-.page-hospoda .wip-container { border: 4px solid #8b0000; border-radius: 15px; background: rgba(40, 15, 5, 0.85); box-shadow: 0 0 25px rgba(210, 105, 30, 0.5); }
-.page-hospoda .wip-title { font-family: 'MedievalSharp', cursive; color: #ffcc00; text-shadow: 2px 2px 4px #000, 0 0 15px #ff8c00; }
-
-.page-zlodej .wip-container { border: 3px solid #140a04; background: linear-gradient(180deg, rgba(90, 54, 30, 0.9) 0%, rgba(38, 20, 9, 0.9) 100%); box-shadow: 4px 4px 15px rgba(0,0,0,1), inset 0 0 20px #4a2e1b; }
-.page-zlodej .wip-title { font-family: 'MedievalSharp', cursive; color: #e6c280; text-shadow: 2px 2px 5px #000; }
+.zlodej:hover {
+    border-color: #6b4226;
+    box-shadow: 0 0 15px #4a2e1b, inset 0 0 30px rgba(49, 28, 15, 0.8);
+}
 
 /* ==========================================
-   RESPONZIVITA
+   RESPONZIVNÍ DESIGN (PRO MOBILY A TABLETY)
    ========================================== */
 @media (max-width: 768px) {
-    .main-title { font-size: 1.8rem; letter-spacing: 5px; top: 10%; }
-    .carousel-container { height: 60vh; margin-top: 15vh; }
-    .portal { flex: 0 0 250px; height: 55vh; }
-    .slide-group { gap: 20px; padding-right: 20px; }
+    .main-title {
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+        top: 2%;
+    }
+    
+    .carousel-container {
+        height: 60vh;
+        margin-top: 15vh;
+    }
+    
+    .portal {
+        flex: 0 0 250px; 
+        height: 55vh;
+    }
+    
+    .slide-group {
+        gap: 20px; 
+        padding-right: 20px; 
+    }
     
     .medival span { font-size: 1.5rem; }
     .cyber span { font-size: 1.6rem; }
