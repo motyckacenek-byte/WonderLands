@@ -48,8 +48,8 @@ body, html {
     display: flex;
     width: max-content;
     will-change: transform; 
-    cursor: grab; /* Ukazatel rozevřené ruky - JS to změní na pěst při kliknutí */
-    user-select: none; /* Zabrání nechtěnému označování textu při tažení */
+    cursor: grab; 
+    user-select: none; 
 }
 
 .slide-group {
@@ -119,27 +119,23 @@ body, html {
 /* ==========================================
    EFEKTY PRO NÁPISY I RÁMEČKY
    ========================================== */
-/* FANTASY */
 .medival span { font-family: 'Metamorphous', cursive; font-size: 2.5rem; color: #e9d5ff; text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87; letter-spacing: 5px; }
 .medival:hover span { animation: rune-pulse 1.5s infinite alternate ease-in-out; }
 .medival:hover { border-color: #a855f7; box-shadow: 0 0 15px #9333ea, inset 0 0 25px rgba(147, 51, 234, 0.6); }
 @keyframes rune-pulse { 0% { text-shadow: 0 0 10px #7e22ce, 0 0 20px #581c87; color: #e9d5ff; } 100% { text-shadow: 0 0 15px #c084fc, 0 0 30px #a855f7, 0 0 50px #7e22ce; color: #ffffff; } }
 
-/* CYBERPUNK */
 .cyber span { font-family: 'Chakra Petch', sans-serif; font-size: 2.5rem; color: #fff; }
 .cyber:hover span { animation: neon-flicker 1.5s infinite alternate; }
 .cyber:hover { animation: neon-flicker-frame 1.5s infinite alternate; }
 @keyframes neon-flicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #0fa, 0 0 40px #0fa, 0 0 80px #0fa; } 20%, 24%, 55% { text-shadow: none; } }
 @keyframes neon-flicker-frame { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { border-color: #fff; box-shadow: 0 0 5px #fff, 0 0 10px #0fa, 0 0 20px #0fa, inset 0 0 20px #0fa; } 20%, 24%, 55% { border-color: rgba(255,255,255,0.1); box-shadow: none; } }
 
-/* POSTAPO */
 .postapo span { font-family: 'Stardos Stencil', system-ui; font-size: 2.6rem; color: #fff; }
 .postapo:hover span { animation: fire-burn 0.15s infinite alternate; }
 .postapo:hover { animation: fire-burn-frame 0.15s infinite alternate; }
 @keyframes fire-burn { 0% { text-shadow: 0 0 5px #fefcc9, 1px -2px 3px #feec85, -2px -4px 5px #ffae34, 2px -8px 8px #ec760c, -1px -12px 10px #cd4606; } 100% { text-shadow: 0 0 5px #fefcc9, -1px -3px 4px #feec85, 2px -5px 6px #ffae34, -2px -10px 10px #ec760c, 1px -14px 12px #cd4606; } }
 @keyframes fire-burn-frame { 0% { border-color: #fefcc9; box-shadow: 0 0 5px #feec85, 0 0 15px #ffae34, inset 0 0 15px #ec760c; } 100% { border-color: #fff; box-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c, inset 0 0 20px #cd4606; } }
 
-/* FROSTPUNK */
 .frost span { font-family: 'Rajdhani', sans-serif; font-size: 3rem; color: #e0f7fa; text-shadow: 0 0 10px rgba(255,255,255,0.8); }
 .frost span::before, .frost span::after { content: 'FROSTPUNK'; position: absolute; top: 0; left: 0; color: transparent; pointer-events: none; opacity: 0; }
 .frost:hover span::after { animation: steam-rise 2s infinite linear; }
@@ -148,30 +144,60 @@ body, html {
 @keyframes steam-rise { 0% { transform: translateY(0) scale(1); opacity: 0.9; text-shadow: 0 0 10px rgba(255,255,255,0.8); filter: blur(2px); } 50% { opacity: 0.6; text-shadow: 0 -15px 20px rgba(255,255,255,1), 0 -20px 25px rgba(255,255,255,0.8); filter: blur(6px); } 100% { transform: translateY(-60px) scale(1.6); opacity: 0; text-shadow: 0 -30px 30px rgba(255,255,255,0.5), 0 -40px 40px rgba(255,255,255,0.3); filter: blur(15px); } }
 @keyframes steam-frame { 0% { box-shadow: 0 0 15px #fff, inset 0 0 20px rgba(224, 247, 250, 0.8); } 100% { box-shadow: 0 0 5px #fff, inset 0 0 5px rgba(224, 247, 250, 0.2); } }
 
-/* HOSPODA */
 .hospoda span { font-family: 'MedievalSharp', cursive; font-size: 2.5rem; color: #ffcc00; text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 15px #d2691e, 0 0 30px #8b0000; }
 .hospoda:hover span { animation: tavern-glow 1s infinite alternate ease-in-out; }
 .hospoda:hover { animation: tavern-glow-frame 1s infinite alternate ease-in-out; }
 @keyframes tavern-glow { 0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px #d2691e, 0 0 20px #8b0000; } 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 20px #ff8c00, 0 0 45px #ff2200; } }
 @keyframes tavern-glow-frame { 0% { border-color: #d2691e; box-shadow: 0 0 10px #d2691e, inset 0 0 15px #8b0000; } 100% { border-color: #ffcc00; box-shadow: 0 0 25px #ff8c00, inset 0 0 25px #ff2200; } }
 
-/* LOUPEŽNICKÝ LES */
 .zlodej span { font-family: 'MedievalSharp', cursive; font-size: 1.6rem; color: #e6c280; background: linear-gradient(180deg, #5a361e 0%, #3e2312 50%, #261409 100%); padding: 8px 25px; border: 3px solid #140a04; border-radius: 4px; box-shadow: 4px 4px 10px rgba(0,0,0,0.8), inset 2px 2px 5px rgba(255,255,255,0.05); }
 .zlodej:hover span { color: #fff; box-shadow: 4px 4px 15px rgba(0,0,0,1), inset 0 0 15px #8b5a2b; }
 .zlodej:hover { border-color: #6b4226; box-shadow: 0 0 15px #4a2e1b, inset 0 0 30px rgba(49, 28, 15, 0.8); }
 
 /* ==========================================
-   MODERNÍ INFORMAČNÍ SEKCE (KLIKACÍ KARTY)
+   MODERNÍ INFORMAČNÍ SEKCE (KLIKACÍ KARTY + ATMOSFÉRA)
    ========================================== */
 .info-section {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(180deg, #050505 0%, #0d0d12 100%);
+    background: #050505;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 80px 20px;
+    position: relative;
+    overflow: hidden; /* Udrží mlhu uvnitř sekce */
+}
+
+/* Magická mlha na pozadí */
+.ambient-glow {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(100px);
+    opacity: 0.15;
+}
+.glow-purple {
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+}
+.glow-cyan {
+    bottom: -10%;
+    right: -10%;
+    background: radial-gradient(circle, #0fa 0%, transparent 70%);
+}
+
+/* Vylepšená hlavička sekce */
+.info-header {
+    text-align: center;
+    margin-bottom: 60px;
+    z-index: 1;
+    position: relative;
 }
 
 .info-main-title {
@@ -180,9 +206,24 @@ body, html {
     letter-spacing: 12px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 80px;
-    text-align: center;
+    margin-bottom: 15px;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.title-separator {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #a855f7, transparent);
+    margin: 0 auto 20px auto;
+    box-shadow: 0 0 10px #a855f7;
+}
+
+.info-subtitle {
+    color: #888;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .cards-container {
@@ -191,10 +232,14 @@ body, html {
     gap: 40px;
     max-width: 1200px;
     width: 100%;
+    z-index: 1;
+    position: relative;
 }
 
+/* Karta s obsahem */
 .info-card {
-    display: block; 
+    display: flex; 
+    flex-direction: column;
     text-decoration: none; 
     background: rgba(15, 15, 20, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -206,6 +251,7 @@ body, html {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-align: left;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.01);
+    overflow: hidden; /* Důležité kvůli vodoznaku */
 }
 
 .info-card:hover {
@@ -242,10 +288,49 @@ body, html {
     100% { background-position: 200% 50%; }
 }
 
+/* Obří vodoznak v pozadí karty */
+.card-bg-watermark {
+    position: absolute;
+    bottom: -30px;
+    right: -20px;
+    font-size: 12rem;
+    opacity: 0.03;
+    transform: rotate(-15deg);
+    pointer-events: none;
+    transition: all 0.5s ease;
+    filter: grayscale(100%);
+}
+
+.info-card:hover .card-bg-watermark {
+    opacity: 0.08;
+    transform: rotate(0deg) scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* Podstavec pro hlavní ikonu */
+.card-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.01);
+    transition: all 0.4s ease;
+}
+
+.info-card:hover .card-icon-wrapper {
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2), inset 0 0 20px rgba(168, 85, 247, 0.2);
+    transform: scale(1.1);
+}
+
 .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    font-size: 2rem;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
 }
 
 .card-title {
@@ -293,7 +378,9 @@ body, html {
     color: #0fa;
 }
 
+/* Odkaz na spodu (díky flexboxu zůstane vždy dole, i když má jiná karta delší text) */
 .card-click-hint {
+    margin-top: auto;
     font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
     font-size: 1.1rem;
@@ -323,7 +410,9 @@ body, html {
     .hospoda span { font-size: 1.6rem; }
     .zlodej span { font-size: 1.2rem; padding: 5px 15px; }
 
-    .info-main-title { font-size: 1.8rem; letter-spacing: 6px; margin-bottom: 40px; }
+    .info-header { margin-bottom: 40px; }
+    .info-main-title { font-size: 1.8rem; letter-spacing: 6px; margin-bottom: 10px; }
+    .info-subtitle { font-size: 1rem; }
     .cards-container { grid-template-columns: 1fr; padding: 0 10px; }
     .info-card { padding: 30px 20px; }
     
