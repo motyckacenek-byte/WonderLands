@@ -14,38 +14,26 @@ body, html {
 }
 
 /* ==========================================
-   HLAVNÍ NADPIS - FIXNÍ A ROLOVACÍ EFEKT
+   HLAVNÍ NADPIS - PŘÍPRAVA PRO JS PARALLAX
    ========================================== */
 .main-title {
-    position: fixed; /* Fixní připevnění k obrazovce */
-    top: 0; 
-    left: 0; 
+    position: relative; 
+    z-index: 100; /* Vždy nad běžícím pásem */
     width: 100%; 
-    z-index: 1000; /* Vysoká vrstva, aby byl nad vším */
     text-align: center;
     color: white; 
     font-size: 3rem; 
     letter-spacing: 15px; 
     font-weight: 900;     
-    padding-top: 10vh; /* Horní odsazení pro fixní pozici */
-    padding-bottom: 5vh;
+    padding: 6vh 0 2vh 0;
     text-transform: uppercase;
-    transition: all 0.3s ease; /* Plynulý přechod pro efekt rolování */
-    pointer-events: none; /* Kliknutí projdou skrz nadpis na obsah */
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%); /* Výchozí průhledný podklad */
-}
-
-/* Speciální třída pro srolovaný stav (aplikuje JS) */
-.main-title.scrolled {
-    opacity: 0.7; /* Snížená průhlednost textu */
-    background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%); /* Tmavý, průhledný gradient */
-    padding-top: 5vh; /* Menší horní odsazení */
-    pointer-events: auto; /* Pro srolovaný stav povolit kliknutí */
-    text-shadow: 0 0 10px rgba(255,255,255,0.4); /* Jemný textový stín pro čitelnost */
+    transition: padding 0.3s ease, background-color 0.1s, backdrop-filter 0.1s, box-shadow 0.1s; 
+    will-change: transform; 
+    pointer-events: none; /* Kliknutí projdou skrz text na obrázky */
 }
 
 /* ==========================================
-   Hlavní okno pro běžící pás
+   HLAVNÍ OKNO PRO BĚŽÍCÍ PÁS
    ========================================== */
 .carousel-container {
     width: 100vw; 
@@ -53,7 +41,6 @@ body, html {
     overflow: hidden; 
     display: flex;
     align-items: center;
-    margin-top: 15vh; /* Odsazení, aby se nedotýkal fixního nadpisu */
     margin-bottom: 5vh;
 }
 
@@ -440,12 +427,6 @@ body, html {
         font-size: 1.8rem;
         letter-spacing: 5px;
         padding-top: 4vh;
-    }
-    
-    .main-title.scrolled {
-        padding-top: 2vh;
-        font-size: 1.5rem;
-        letter-spacing: 3px;
     }
 
     .carousel-container {
