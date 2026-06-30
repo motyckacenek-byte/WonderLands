@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <!-- Tento nápis se díky JS zvětší a spadne do pozadí -->
+    <!-- Tento nápis se díky JS zvětší a zastaví se UPROSTŘED PŘED RÁMEČKY -->
     <h1 class="main-title" id="bg-title">WONDERLANDS</h1>
 
     <!-- Běžící pás -->
@@ -36,7 +36,7 @@
         </div>
     </main>
 
-    <!-- Obal pro obě informační karty (aby scrollovaly přes ten velký nápis) -->
+    <!-- Obal pro obě informační karty (aby scrollovaly pod tím velkým nápisem) -->
     <div class="content-wrapper">
         
         <!-- 1. KARTA: O PROJEKTU -->
@@ -91,8 +91,8 @@
     <script>
         window.addEventListener('scroll', function() {
             const title = document.getElementById('bg-title');
-            // Pokud člověk odscrolluje víc než 50 pixelů dolů, přidá se efekt
-            if (window.scrollY > 50) {
+            // Pokud člověk odscrolluje víc než 80 pixelů dolů, přidá se efekt
+            if (window.scrollY > 80) {
                 title.classList.add('scrolled');
             } else {
                 title.classList.remove('scrolled');
