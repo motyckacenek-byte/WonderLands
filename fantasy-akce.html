@@ -3,69 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy - WonderLands</title>
+    <title>Fantasy Svět - WonderLands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Arial&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: #050505;
-            color: white;
+            /* Tady to načte tvůj obrázek z hlavní stránky a roztáhne ho přes celý web */
+            background-image: linear-gradient(rgba(5, 5, 5, 0.8), rgba(15, 5, 25, 0.9)), url('medival.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #e2e8f0;
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
         }
+
+        /* --- HLAVIČKA --- */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
         h1 {
             font-family: 'Metamorphous', cursive;
-            font-size: 4rem;
+            font-size: 5rem;
             color: #e9d5ff;
             text-shadow: 0 0 15px #9333ea, 0 0 30px #581c87;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
+            letter-spacing: 8px;
             text-transform: uppercase;
+            margin-bottom: 10px;
         }
-        .notice {
-            font-size: 1.5rem;
+
+        .stewie-notice {
             color: #a855f7;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            animation: pulse 1.5s infinite alternate ease-in-out;
+            animation: pulse 2s infinite alternate ease-in-out;
         }
+
         @keyframes pulse {
-            0% { opacity: 0.6; text-shadow: 0 0 5px rgba(168, 85, 247, 0.5); }
-            100% { opacity: 1; text-shadow: 0 0 15px rgba(168, 85, 247, 1); }
+            0% { opacity: 0.5; text-shadow: 0 0 5px #7e22ce; }
+            100% { opacity: 1; text-shadow: 0 0 15px #a855f7; }
         }
+
+        /* --- HLAVNÍ OBSAH --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Levý sloupec širší, pravý užší */
+            gap: 30px;
+        }
+
+        /* Poloprůhledné panely */
+        .panel {
+            background: rgba(30, 10, 50, 0.4);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px); /* Efekt zamlženého skla */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .panel:hover {
+            border-color: rgba(168, 85, 247, 0.8);
+            box-shadow: 0 10px 40px rgba(147, 51, 234, 0.3);
+        }
+
+        h2 {
+            font-family: 'Metamorphous', cursive;
+            color: #c084fc;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #7e22ce;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        /* --- KARTIČKY V PRAVÉM SLOUPCI --- */
+        .stats-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-left: 4px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateX(10px);
+            background: rgba(147, 51, 234, 0.2);
+            border-color: #e9d5ff;
+        }
+
+        .stat-card strong {
+            display: block;
+            color: #e9d5ff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-family: 'Metamorphous', cursive;
+        }
+
+        /* --- SPODNÍ NAVIGACE --- */
+        .footer-nav {
+            text-align: center;
+            padding: 50px 20px 80px;
+        }
+
         .btn-back {
             display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #581c87, #9333ea);
             color: white;
-            border: 2px solid #a855f7;
             text-decoration: none;
-            text-transform: uppercase;
+            font-size: 1.2rem;
             font-weight: bold;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            border: 2px solid #c084fc;
             transition: all 0.3s ease;
-            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
         }
+
         .btn-back:hover {
-            background: #a855f7;
-            box-shadow: 0 0 20px #9333ea;
+            background: linear-gradient(45deg, #7e22ce, #a855f7);
+            box-shadow: 0 0 30px #c084fc;
+            transform: scale(1.05);
+        }
+
+        /* --- RESPONZIVITA (PRO MOBILY) --- */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr; /* Na mobilu hodí sloupce pod sebe */
+            }
+            h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Fantasy</h1>
-    <p class="notice">na tom se pracuje Stewie</p>
-    <a href="index.html" class="btn-back">⬅ Zpět na výběr</a>
+    <header>
+        <h1>Fantasy</h1>
+        <p class="stewie-notice">na tom se pracuje Stewie</p>
+    </header>
+
+    <main class="container">
+        <!-- Levý velký sloupec pro příběh -->
+        <div class="panel">
+            <h2>Příběh Frakce</h2>
+            <p>Vítej ve světě, kde magie proudí v žilách samotné země. Starověké lesy skrývají tajemství předků a na vrcholcích hor sídlí draci střežící prastaré poklady. Ti, kdo vstoupí do tohoto světa, musí prokázat svou odvahu, neboť stíny se prodlužují a temnota na obzoru sílí.</p>
+            <p>Zde můžeš napsat podrobnější lore o tom, co se na Fantasy sekci bude dít, jaká jsou pravidla, nebo co si mají hráči přinést za kostýmy.</p>
+        </div>
+
+        <!-- Pravý užší sloupec pro rychlé info -->
+        <div class="panel">
+            <h2>Informace</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <strong>Obtížnost</strong>
+                    Pro začátečníky i pokročilé
+                </div>
+                <div class="stat-card">
+                    <strong>Zbraně</strong>
+                    Měkčené meče, luky, magie
+                </div>
+                <div class="stat-card">
+                    <strong>Lokace</strong>
+                    Severní hradiska
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer-nav">
+        <a href="index.html" class="btn-back">⬅ Zpět na portály</a>
+    </div>
 
 </body>
 </html>
