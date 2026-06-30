@@ -11,10 +11,13 @@
 </head>
 <body>
 
-    <!-- Tento nápis se díky JS zvětší a zastaví se UPROSTŘED PŘED RÁMEČKY -->
-    <h1 class="main-title" id="bg-title">WONDERLANDS</h1>
+    <!-- Klasický nápis úplně nahoře (odjede přirozeně pryč při scrollování) -->
+    <h1 class="main-title">WONDERLANDS</h1>
 
-    <!-- Běžící pás -->
+    <!-- OBŘÍ nápis, který se objeví až při scrollování dolů -->
+    <div class="bg-title" id="bg-title">WONDERLANDS</div>
+
+    <!-- Běžící pás s frakcemi -->
     <main class="carousel-container">
         <div class="carousel-track">
             <div class="slide-group">
@@ -87,15 +90,17 @@
 
     </div>
 
-    <!-- Skript, který zařídí změnu nápisu při scrollování -->
+    <!-- Skript pro obří nápis -->
     <script>
         window.addEventListener('scroll', function() {
-            const title = document.getElementById('bg-title');
-            // Pokud člověk odscrolluje víc než 80 pixelů dolů, přidá se efekt
-            if (window.scrollY > 80) {
-                title.classList.add('scrolled');
+            const bgTitle = document.getElementById('bg-title');
+            const carouselHeight = document.querySelector('.carousel-container').offsetHeight;
+            
+            // Efekt vyskočí, až když odscrolluješ zhruba pod úroveň těch hlavních fotek
+            if (window.scrollY > (carouselHeight / 1.5)) {
+                bgTitle.classList.add('active');
             } else {
-                title.classList.remove('scrolled');
+                bgTitle.classList.remove('active');
             }
         });
     </script>
