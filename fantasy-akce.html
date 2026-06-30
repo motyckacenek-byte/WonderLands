@@ -19,12 +19,11 @@
             background-position: center;
             background-attachment: fixed;
             color: #d4cfc5;
-            font-family: 'Cinzel', serif; /* Změna fontu pro texty na filmovější */
+            font-family: 'Cinzel', serif;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Temný fantasy posuvník */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #0a0510; }
         ::-webkit-scrollbar-thumb { background: #581c87; border-radius: 5px; border: 1px solid #a855f7; }
@@ -71,7 +70,7 @@
             top: 60px;
             left: 50%;
             transform: translateX(-50%);
-            color: #d4af37; /* Zlatá */
+            color: #d4af37;
             font-family: 'Metamorphous', cursive;
             font-size: 1rem;
             letter-spacing: 5px;
@@ -100,7 +99,7 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto 50px;
-            padding: 50px;
+            padding: 50px 80px; /* Zvětšený padding pro runy po stranách */
             background: rgba(15, 5, 20, 0.85);
             border: 1px solid #3b0764;
             box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(88, 28, 135, 0.5);
@@ -110,7 +109,6 @@
             gap: 50px;
         }
 
-        /* Ozdobné magické rohy pro desku */
         .grimoire-container::before, .grimoire-container::after {
             content: '';
             position: absolute;
@@ -122,10 +120,39 @@
         .grimoire-container::before { top: -10px; left: -10px; border-right: none; border-bottom: none; }
         .grimoire-container::after { bottom: -10px; right: -10px; border-left: none; border-top: none; }
 
+        /* --- ZÁŘÍCÍ RUNY NA OKRAJÍCH DESKY --- */
+        .runic-border {
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5rem;
+            color: rgba(168, 85, 247, 0.4);
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+            user-select: none;
+        }
+        .runic-left { left: 15px; }
+        .runic-right { right: 15px; }
+
+        /* Interaktivní efekt při najetí myší na runu */
+        .runic-border span {
+            transition: 0.3s;
+            cursor: crosshair;
+        }
+        .runic-border span:hover {
+            color: #ffffff;
+            text-shadow: 0 0 15px #c084fc, 0 0 30px #e9d5ff, 0 0 50px #a855f7;
+            transform: scale(1.5);
+        }
+
         /* --- LEVÁ STRANA: PŘÍBĚH A LORE --- */
         .lore-section h2 {
             font-family: 'Metamorphous', cursive;
-            color: #d4af37; /* Zlatá nadpisy */
+            color: #d4af37; 
             font-size: 2.5rem;
             margin-bottom: 30px;
             text-align: center;
@@ -133,22 +160,16 @@
             position: relative;
         }
 
-        /* Zlatý oddělovač pod nadpisem */
+        /* Runový oddělovač pod nadpisem */
         .lore-section h2::after {
-            content: '♦';
+            content: 'ᚲ ᛗ ᚨ ᚷ ᛁ ᚨ ᚲ';
             display: block;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #a855f7;
-            margin-top: 10px;
-            letter-spacing: 50px;
-            text-indent: 50px; /* Vycentruje diamant */
-            position: relative;
-        }
-        .lore-section h2::before {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 20%; width: 60%; height: 1px;
-            background: linear-gradient(90deg, transparent, #a855f7, transparent);
+            margin-top: 15px;
+            letter-spacing: 15px;
+            text-indent: 15px;
+            text-shadow: 0 0 15px #7e22ce;
         }
 
         .lore-text {
@@ -157,7 +178,6 @@
             text-align: justify;
         }
 
-        /* Velká iluminovaná iniciála (Drop Cap) */
         .lore-text p:first-of-type::first-letter {
             font-family: 'Metamorphous', cursive;
             float: left;
@@ -195,7 +215,6 @@
             transform: scale(1.02) translateX(-5px);
         }
 
-        /* Samotný zářící krystal vedle textu */
         .crystal-card::before {
             content: '';
             position: absolute;
@@ -252,7 +271,6 @@
             transition: 0.4s;
         }
 
-        /* Magický záblesk při najetí na tlačítko */
         .btn-portal::before {
             content: '';
             position: absolute;
@@ -274,14 +292,13 @@
         @media (max-width: 960px) {
             h1 { font-size: 3.5rem; letter-spacing: 5px; }
             .grimoire-container { grid-template-columns: 1fr; padding: 30px 20px; }
-            .grimoire-container::before, .grimoire-container::after { display: none; } /* Na mobilu schováme rohy pro čistotu */
+            .grimoire-container::before, .grimoire-container::after, .runic-border { display: none; }
             .lore-text p:first-of-type::first-letter { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Animované světlušky na pozadí -->
     <div class="magic-orbs">
         <div class="orb"></div>
         <div class="orb"></div>
@@ -297,7 +314,16 @@
 
     <main class="grimoire-container">
         
-        <!-- Levá část s příběhem -->
+        <!-- Levý runový sloup -->
+        <div class="runic-border runic-left">
+            <span>ᚠ</span><span>ᚨ</span><span>ᚱ</span><span>ᚲ</span><span>ᚷ</span><span>ᚹ</span><span>ᚺ</span><span>ᚾ</span><span>ᛁ</span><span>ᛃ</span>
+        </div>
+
+        <!-- Pravý runový sloup -->
+        <div class="runic-border runic-right">
+            <span>ᛇ</span><span>ᛈ</span><span>ᛉ</span><span>ᛊ</span><span>ᛏ</span><span>ᛒ</span><span>ᛖ</span><span>ᛗ</span><span>ᛚ</span><span>ᛟ</span>
+        </div>
+        
         <section class="lore-section">
             <h2>Prastaré Letopisy</h2>
             <div class="lore-text">
@@ -306,7 +332,6 @@
             </div>
         </section>
 
-        <!-- Pravá část s krystalickými informacemi -->
         <aside class="info-section">
             <div class="crystal-card">
                 <h3>Úroveň Akce</h3>
