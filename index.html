@@ -11,11 +11,12 @@
 </head>
 <body>
 
-    <h1 class="main-title">WONDERLANDS</h1>
+    <!-- Tento nápis se díky JS zvětší a spadne do pozadí -->
+    <h1 class="main-title" id="bg-title">WONDERLANDS</h1>
 
+    <!-- Běžící pás -->
     <main class="carousel-container">
         <div class="carousel-track">
-            
             <div class="slide-group">
                 <a href="fantasy-akce.html" class="portal medival"><span>FANTASY</span></a>
                 <a href="postapo-akce.html" class="portal postapo"><span>POSTAPO</span></a>
@@ -24,7 +25,6 @@
                 <a href="hospoda-akce.html" class="portal hospoda"><span>KRČMA</span></a>
                 <a href="zlodej-akce.html" class="portal zlodej"><span>LOUPEŽNICKÝ LES</span></a>
             </div>
-
             <div class="slide-group">
                 <a href="fantasy-akce.html" class="portal medival"><span>FANTASY</span></a>
                 <a href="postapo-akce.html" class="portal postapo"><span>POSTAPO</span></a>
@@ -33,30 +33,42 @@
                 <a href="hospoda-akce.html" class="portal hospoda"><span>KRČMA</span></a>
                 <a href="zlodej-akce.html" class="portal zlodej"><span>LOUPEŽNICKÝ LES</span></a>
             </div>
-
         </div>
     </main>
 
-    <!-- SEKCE PROMO A O AUTOROVI -->
-    <section class="author-section">
-        <h2 class="author-main-title">O PROJEKTU A TVŮRCI</h2>
+    <!-- Obal pro obě informační karty (aby scrollovaly přes ten velký nápis) -->
+    <div class="content-wrapper">
         
-        <div class="author-card">
-            <div class="card-glow-line"></div>
+        <!-- 1. KARTA: O PROJEKTU -->
+        <section class="info-card">
+            <div class="card-glow-line project-glow"></div>
+            <!-- Zástupné textové logo -->
+            <div class="project-logo">WONDERLANDS</div>
             
+            <h2 class="section-heading">O Projektu</h2>
+            <div class="content-text">
+                <p><strong>Co je to WonderLands?</strong> Není to jen další webová stránka. Je to srdcový projekt, který vznikl s jasným cílem: vlít novou krev do žil české LARPové scéně a znovu ji pořádně oživit.</p> 
+                <p>Ať už jde o epické bitvy s měkčenými meči v hlubokých lesích, mrazivé přežívání ve Frostpunku nebo intriky v kyberpunkovém podsvětí, WonderLands tvoří prostor pro hráče, kteří chtějí zažít něco víc než jen obyčejný víkend. Vytváříme propracované světy, kde pravidla dávají smysl a rekvizity vtáhnou přímo do děje.</p>
+            </div>
+        </section>
+
+        <!-- 2. KARTA: KDO ZA TÍM STOJÍ (STEVIE) -->
+        <section class="author-card">
+            <div class="card-glow-line author-glow"></div>
+            
+            <h2 class="section-heading">Kdo za tím stojí</h2>
             <h3 class="author-name">VÁCLAV VONDRA <span class="nickname">aka STEVIE</span></h3>
             <p class="author-subtitle">Kreativní bůh | Průměrně nasvalený umělec | Lore Master</p>
             
-            <div class="author-text">
-                <p><strong>Co je to WonderLands?</strong> Není to jen další webová stránka. Je to srdcový projekt, který vznikl s jasným cílem: vlít novou krev do žil české LARPové scéně a znovu ji pořádně oživit. Ať už jde o epické bitvy s měkčenými meči v hlubokých lesích, mrazivé přežívání ve Frostpunku nebo intriky v kyberpunkovém podsvětí, WonderLands tvoří prostor pro hráče, kteří chtějí zažít něco víc než jen obyčejný víkend.</p>
-                
-                <p><strong>Kdo za tím stojí?</strong> Právě Stevie. Kreativní mozek, který po večerech místo sledování seriálů vymýšlí příběhové linky, kreslí mapy, designuje herní mechaniky a lepí rekvizity. Jakožto umělec s nebezpečně ostrým smyslem pro humor a nekonečným zápalem pro věc, dává každé herní frakci její unikátní tvář a duši. Pokud se v lese objeví nová krčma nebo radioaktivní anomálie, můžete vzít jed na to, že ji vymyslel on.</p>
+            <div class="content-text">
+                <p>Stevie je kreativní mozek, který po večerech místo sledování seriálů vymýšlí příběhové linky, kreslí mapy, designuje herní mechaniky a lepí rekvizity z EVA pěny. Jakožto umělec s nebezpečně ostrým smyslem pro humor a nekonečným zápalem pro věc, dává každé herní frakci její unikátní tvář a duši.</p>
+                <p>Zatímco se ostatní snaží přesvědčit kód, aby fungoval, Stevie se stará o to, aby ten svět reálně ožil. Pokud se v lese objeví nová krčma nebo radioaktivní anomálie, můžete vzít jed na to, že ji vymyslel on.</p>
             </div>
 
             <div class="author-stats">
                 <div class="stat-box">
                     <strong>Level 42 Artificer</strong>
-                    <span>Dokáže vyrobit funkční postapo zbraň z kobercovky, EVA pěny a čistého nadšení.</span>
+                    <span>Dokáže vyrobit funkční zbraň z kobercovky a čistého nadšení.</span>
                 </div>
                 <div class="stat-box">
                     <strong>Pasivní schopnost</strong>
@@ -64,15 +76,29 @@
                 </div>
                 <div class="stat-box">
                     <strong>Kryptonit</strong>
-                    <span>Hráči, kteří nečtou pravidla, a nedostatek vteřinového lepidla.</span>
+                    <span>Hráči, co nečtou pravidla, a nedostatek vteřinového lepidla.</span>
                 </div>
                 <div class="stat-box">
                     <strong>Zápal pro věc</strong>
-                    <span>Over 9000. Když má vizi, neexistuje překážka, která by ho zastavila.</span>
+                    <span>Over 9000. Když má vizi, neexistuje překážka, co ho zastaví.</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
+
+    <!-- Skript, který zařídí změnu nápisu při scrollování -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const title = document.getElementById('bg-title');
+            // Pokud člověk odscrolluje víc než 50 pixelů dolů, přidá se efekt
+            if (window.scrollY > 50) {
+                title.classList.add('scrolled');
+            } else {
+                title.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
 </html>
