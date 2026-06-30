@@ -11,10 +11,10 @@
 </head>
 <body>
 
-    <h1 class="main-title">WONDERLANDS</h1>
+    <!-- Tento nápis se díky JS zvětší a zastaví se UPROSTŘED PŘED RÁMEČKY -->
+    <h1 class="main-title" id="bg-title">WONDERLANDS</h1>
 
-    <div class="bg-title" id="bg-title">WONDERLANDS</div>
-
+    <!-- Běžící pás -->
     <main class="carousel-container">
         <div class="carousel-track">
             <div class="slide-group">
@@ -36,10 +36,13 @@
         </div>
     </main>
 
+    <!-- Obal pro obě informační karty (aby scrollovaly pod tím velkým nápisem) -->
     <div class="content-wrapper">
         
+        <!-- 1. KARTA: O PROJEKTU -->
         <section class="info-card">
             <div class="card-glow-line project-glow"></div>
+            <!-- Zástupné textové logo -->
             <div class="project-logo">WONDERLANDS</div>
             
             <h2 class="section-heading">O Projektu</h2>
@@ -49,6 +52,7 @@
             </div>
         </section>
 
+        <!-- 2. KARTA: KDO ZA TÍM STOJÍ (STEVIE) -->
         <section class="author-card">
             <div class="card-glow-line author-glow"></div>
             
@@ -83,16 +87,15 @@
 
     </div>
 
+    <!-- Skript, který zařídí změnu nápisu při scrollování -->
     <script>
         window.addEventListener('scroll', function() {
-            const bgTitle = document.getElementById('bg-title');
-            const carouselHeight = document.querySelector('.carousel-container').offsetHeight;
-            
-            // Efekt vyskočí, až když odscrolluješ zhruba pod úroveň těch hlavních fotek
-            if (window.scrollY > (carouselHeight / 1.5)) {
-                bgTitle.classList.add('active');
+            const title = document.getElementById('bg-title');
+            // Pokud člověk odscrolluje víc než 80 pixelů dolů, přidá se efekt
+            if (window.scrollY > 80) {
+                title.classList.add('scrolled');
             } else {
-                bgTitle.classList.remove('active');
+                title.classList.remove('scrolled');
             }
         });
     </script>
