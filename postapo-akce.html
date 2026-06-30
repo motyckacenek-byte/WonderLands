@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postapo - WonderLands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #050505;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Stardos Stencil', system-ui;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .notice {
+            font-size: 1.5rem;
+            color: #ffae34;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            animation: flicker 0.15s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { text-shadow: 0 0 4px #ec760c; }
+            100% { text-shadow: 0 0 12px #ffae34; }
+        }
+        .btn-back {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: white;
+            border: 2px solid #ec760c;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .btn-back:hover {
+            background: #ec760c;
+            box-shadow: 0 0 20px #cd4606;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Postapo</h1>
+    <p class="notice">na tom se pracuje Stewie</p>
+    <a href="index.html" class="btn-back">⬅ Zpět na výběr</a>
+
+</body>
+</html>

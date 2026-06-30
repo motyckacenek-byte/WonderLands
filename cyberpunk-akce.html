@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk - WonderLands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #050505;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 0 0 10px #0fa, 0 0 20px #0fa;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .notice {
+            font-size: 1.5rem;
+            color: #0fa;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            animation: neon 1.5s infinite alternate;
+        }
+        @keyframes neon {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #0fa, 0 0 15px #0fa; opacity: 1; }
+            20%, 24%, 55% { text-shadow: none; opacity: 0.7; }
+        }
+        .btn-back {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: white;
+            border: 2px solid #0fa;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .btn-back:hover {
+            background: #0fa;
+            color: black;
+            box-shadow: 0 0 20px #0fa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cyberpunk</h1>
+    <p class="notice">na tom se pracuje Stewie</p>
+    <a href="index.html" class="btn-back">⬅ Zpět na výběr</a>
+
+</body>
+</html>
