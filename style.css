@@ -11,13 +11,10 @@
 </head>
 <body>
 
-    <!-- Klasický nápis úplně nahoře (odjede přirozeně pryč při scrollování) -->
     <h1 class="main-title">WONDERLANDS</h1>
 
-    <!-- OBŘÍ nápis, který se objeví až při scrollování dolů -->
     <div class="bg-title" id="bg-title">WONDERLANDS</div>
 
-    <!-- Běžící pás s frakcemi -->
     <main class="carousel-container">
         <div class="carousel-track">
             <div class="slide-group">
@@ -39,13 +36,10 @@
         </div>
     </main>
 
-    <!-- Obal pro obě informační karty (aby scrollovaly pod tím velkým nápisem) -->
     <div class="content-wrapper">
         
-        <!-- 1. KARTA: O PROJEKTU -->
         <section class="info-card">
             <div class="card-glow-line project-glow"></div>
-            <!-- Zástupné textové logo -->
             <div class="project-logo">WONDERLANDS</div>
             
             <h2 class="section-heading">O Projektu</h2>
@@ -55,7 +49,6 @@
             </div>
         </section>
 
-        <!-- 2. KARTA: KDO ZA TÍM STOJÍ (STEVIE) -->
         <section class="author-card">
             <div class="card-glow-line author-glow"></div>
             
@@ -90,7 +83,6 @@
 
     </div>
 
-    <!-- Skript pro obří nápis -->
     <script>
         window.addEventListener('scroll', function() {
             const bgTitle = document.getElementById('bg-title');
