@@ -192,19 +192,19 @@ body, html {
     background: radial-gradient(circle, #0fa 0%, transparent 70%);
 }
 
-/* Obří nenásilný vodoznak přes celou sekci */
+/* Obří nenásilný vodoznak přes celou sekci (Zmenšeno pro lepší čitelnost) */
 .section-watermark {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Arial Black', sans-serif;
-    font-size: 15vw; 
-    color: rgba(255, 255, 255, 0.03); 
+    font-size: 8vw; 
+    color: rgba(255, 255, 255, 0.04); 
     white-space: nowrap;
     pointer-events: none; 
     z-index: 0; 
-    letter-spacing: 2vw;
+    letter-spacing: 1vw;
     user-select: none;
 }
 
@@ -260,7 +260,7 @@ body, html {
     background: rgba(15, 15, 20, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    padding: 50px 30px 40px; /* Zvětšeno horní odsazení po smazání ikony */
+    padding: 50px 30px 40px; 
     position: relative;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -304,7 +304,7 @@ body, html {
     100% { background-position: 200% 50%; }
 }
 
-/* Obří vodoznak v pozadí karty - "MRDOVÝ EMOJI" */
+/* Obří vodoznak v pozadí karty */
 .card-bg-watermark {
     position: absolute;
     bottom: -30px;
