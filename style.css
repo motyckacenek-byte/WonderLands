@@ -22,8 +22,8 @@ body, html {
     width: 100%; 
     text-align: center;
     color: white; 
-    font-size: 3rem; 
-    letter-spacing: 15px; 
+    font-size: 5rem; /* PŮVODNĚ 3rem - pořádně zvětšeno */
+    letter-spacing: 20px; /* PŮVODNĚ 15px - roztaženo pro epický efekt */
     font-weight: 900;     
     padding: 6vh 0 2vh 0;
     text-transform: uppercase;
@@ -204,8 +204,8 @@ body, html {
 
 /* Samotná karta - nyní funguje jako blokový odkaz */
 .info-card {
-    display: block; /* Zajišťuje, že odkaz funguje jako kontejner */
-    text-decoration: none; /* Odstraní podtržení odkazu */
+    display: block; 
+    text-decoration: none; 
     background: rgba(15, 15, 20, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
@@ -267,7 +267,6 @@ body, html {
     text-transform: uppercase;
 }
 
-/* Formátování nového seznamu */
 .card-list {
     list-style: none;
     padding: 0;
@@ -289,7 +288,6 @@ body, html {
     color: #ccc;
 }
 
-/* Stylová odrážka v podobě šipky/diamantu */
 .card-list li::before {
     content: '▹'; 
     position: absolute;
@@ -305,7 +303,6 @@ body, html {
     color: #0fa;
 }
 
-/* Interaktivní šipka na spodu karty */
 .card-click-hint {
     font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
@@ -325,7 +322,7 @@ body, html {
    RESPONZIVITA (PRO MOBILY A TABLETY)
    ========================================== */
 @media (max-width: 768px) {
-    .main-title { font-size: 1.8rem; letter-spacing: 5px; padding-top: 4vh; }
+    .main-title { font-size: 2.5rem; letter-spacing: 8px; padding-top: 4vh; } /* Zvětšeno i pro mobily */
     .carousel-container { height: 60vh; margin-top: 2vh; }
     .portal { flex: 0 0 250px; height: 55vh; }
     .slide-group { gap: 20px; padding-right: 20px; }
