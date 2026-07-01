@@ -155,6 +155,37 @@ body, html {
 .zlodej:hover { border-color: #6b4226; box-shadow: 0 0 15px #4a2e1b, inset 0 0 30px rgba(49, 28, 15, 0.8); }
 
 /* ==========================================
+   STAVEBNÍ PÁSKA (V REKONSTRUKCI)
+   ========================================== */
+.portal.under-construction::before {
+    /* Ztmaví a mírně odbarví obrázek na pozadí */
+    filter: brightness(0.35) grayscale(0.7);
+}
+
+.portal.under-construction::after {
+    content: 'V REKONSTRUKCI';
+    position: absolute;
+    top: 45%;
+    left: -30%;
+    width: 160%;
+    /* Žluto-černá pruhovaná páska */
+    background: repeating-linear-gradient(45deg, #ffd700, #ffd700 25px, #111 25px, #111 50px);
+    color: #fff;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-align: center;
+    padding: 10px 0;
+    /* Narovná text vůči zkosenému portálu a nakloní ho */
+    transform: skewX(15deg) rotate(-20deg);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0px #000, -1px -1px 0px #000;
+    pointer-events: none; /* Aby šlo přes pásku na portál kliknout */
+}
+
+/* ==========================================
    MODERNÍ INFORMAČNÍ SEKCE (KLIKACÍ KARTY + ATMOSFÉRA)
    ========================================== */
 .info-section {
@@ -192,7 +223,7 @@ body, html {
     background: radial-gradient(circle, #0fa 0%, transparent 70%);
 }
 
-/* Obří nenásilný vodoznak přes celou sekci (Zmenšeno pro lepší čitelnost) */
+/* Obří nenásilný vodoznak přes celou sekci */
 .section-watermark {
     position: absolute;
     top: 50%;
