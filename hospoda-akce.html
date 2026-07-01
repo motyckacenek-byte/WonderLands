@@ -7,62 +7,144 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: #050505;
-            color: white;
-            font-family: 'Arial', sans-serif;
+            background-color: #0a0502;
+            background-image: radial-gradient(circle at center, rgba(60, 20, 0, 0.6) 0%, rgba(10, 5, 2, 0.95) 100%), url('hospoda.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #d4cfc5;
+            font-family: 'MedievalSharp', cursive;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+            overflow-x: hidden;
         }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0502; }
+        ::-webkit-scrollbar-thumb { background: #8b4513; border: 1px solid #ffcc00; }
+        ::-webkit-scrollbar-thumb:hover { background: #d2691e; }
+
+        .magic-runes {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        
+        .floating-rune {
+            position: absolute; color: #ff8c00; 
+            text-shadow: 0 0 10px #ff2200;
+            animation: float-ember infinite ease-in; opacity: 0; user-select: none; font-size: 10px;
+        }
+
+        .floating-rune:nth-child(1) { left: 20%; animation-duration: 5s; animation-delay: 0s; }
+        .floating-rune:nth-child(2) { left: 80%; animation-duration: 7s; animation-delay: -2s; font-size: 15px;}
+        .floating-rune:nth-child(3) { left: 50%; animation-duration: 4s; animation-delay: -1s; }
+        .floating-rune:nth-child(4) { left: 30%; animation-duration: 6s; animation-delay: -4s; font-size: 12px;}
+        .floating-rune:nth-child(5) { left: 70%; animation-duration: 8s; animation-delay: -3s; }
+
+        @keyframes float-ember {
+            0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+        }
+
+        header { position: relative; text-align: center; padding: 100px 20px 40px; z-index: 2; }
+
+        .stewie-notice {
+            position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
+            color: #ffcc00; font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase;
+            text-shadow: 0 0 10px #d2691e;
+        }
+
         h1 {
-            font-family: 'MedievalSharp', cursive;
-            font-size: 4rem;
-            color: #ffcc00;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 20px #d2691e;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            font-size: 6rem; color: #ffcc00; text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 30px #d2691e;
+            letter-spacing: 8px; text-transform: uppercase; margin-bottom: 20px;
         }
-        .notice {
-            font-size: 1.5rem;
-            color: #ff8c00;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            font-family: 'MedievalSharp', cursive;
+
+        .grimoire-container {
+            position: relative; max-width: 1200px; margin: 0 auto 50px; padding: 50px 80px;
+            background: rgba(30, 15, 5, 0.85); border: 2px solid #8b4513; border-radius: 5px;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(139, 69, 19, 0.5);
+            z-index: 2; display: grid; grid-template-columns: 2fr 1fr; gap: 50px;
         }
-        .btn-back {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: white;
-            border: 2px solid #ffcc00;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            border-radius: 4px;
+
+        .lore-section h2 { color: #ffcc00; font-size: 3rem; margin-bottom: 30px; text-align: center; text-shadow: 2px 2px 5px #000; }
+        .lore-section h2::after { content: '--- NÁSTĚNKA ---'; display: block; font-size: 1.5rem; color: #d2691e; margin-top: 10px; letter-spacing: 5px; }
+
+        .lore-text { font-size: 1.4rem; line-height: 1.8; text-align: justify; color: #e6c280; font-family: 'Arial', sans-serif;}
+        .lore-text p:first-of-type::first-letter {
+            font-family: 'MedievalSharp', cursive; float: left; font-size: 5rem; line-height: 0.8;
+            padding-right: 15px; padding-top: 5px; color: #ffcc00; text-shadow: 2px 2px 5px #000;
         }
-        .btn-back:hover {
-            background: #ffcc00;
-            color: black;
-            box-shadow: 0 0 20px #ff8c00;
+        .lore-text p { margin-bottom: 25px; }
+
+        .info-section { display: flex; flex-direction: column; gap: 30px; padding-top: 20px; }
+        .crystal-card {
+            position: relative; background: linear-gradient(135deg, #3a1c00 0%, #1a0800 100%);
+            padding: 25px 20px 25px 60px; border: 1px solid #8b4513; border-radius: 5px; transition: 0.4s;
+        }
+        .crystal-card:hover { border-color: #ffcc00; box-shadow: inset 0 0 20px rgba(210, 105, 30, 0.3); transform: scale(1.02); }
+        .crystal-card::before {
+            content: '🍺'; position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+            font-size: 1.8rem;
+        }
+        .crystal-card h3 { color: #ffcc00; font-size: 1.5rem; margin-bottom: 5px; }
+        .crystal-card p { font-size: 1rem; color: #cba; font-family: 'Arial', sans-serif;}
+
+        .portal-btn-container { text-align: center; padding-bottom: 80px; z-index: 2; position: relative; }
+        .btn-portal {
+            display: inline-block; padding: 15px 50px; background: #2a1100; color: #ffcc00;
+            font-size: 1.5rem; text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
+            border: 2px solid #8b4513; border-radius: 5px; transition: 0.4s; box-shadow: 2px 2px 10px #000;
+        }
+        .btn-portal:hover { background: #3a1c00; border-color: #ffcc00; box-shadow: 0 0 20px #d2691e; }
+
+        @media (max-width: 960px) {
+            h1 { font-size: 3.5rem; }
+            .grimoire-container { grid-template-columns: 1fr; padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Krčma</h1>
-    <p class="notice">na tom se pracuje Stewie</p>
-    <a href="index.html" class="btn-back">⬅ Zpět na výběr</a>
+    <div class="magic-runes">
+        <div class="floating-rune">🔥</div><div class="floating-rune">🔥</div>
+        <div class="floating-rune">🔥</div><div class="floating-rune">🔥</div>
+        <div class="floating-rune">🔥</div>
+    </div>
+
+    <header>
+        <div class="stewie-notice">~ Brousíme dýky a točíme pivo, Stewie ~</div>
+        <h1>Krčma</h1>
+    </header>
+
+    <main class="grimoire-container">
+        <section class="lore-section">
+            <h2>U Zlomeného Štítu</h2>
+            <div class="lore-text">
+                <p>Vítej u praskajícího krbu, poutníče. Zde se setkávají všechny cesty. Odlož svůj meč (ale nech si ho na dosah), posaď se k masivnímu dubovému stolu a poslouchej drby, které k nám přináší vítr z celého království.</p>
+                <p>Naše krčma funguje jako záchytný bod pro komunitu, debaty a odpočinkové akce. Aktuálně doplňujeme sudy a připravujeme pro vás první večerní programy. Sledujte nástěnku!</p>
+            </div>
+        </section>
+
+        <aside class="info-section">
+            <div class="crystal-card">
+                <h3>Stav Podniku</h3>
+                <p>Otevřeno (Chystáme program!)</p>
+            </div>
+            <div class="crystal-card">
+                <h3>Nabídka</h3>
+                <p>Debaty, roleplay, deskovky a medovina.</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="portal-btn-container">
+        <a href="index.html" class="btn-portal">Zpět k Portálům</a>
+    </div>
 
 </body>
 </html>

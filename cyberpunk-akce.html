@@ -6,67 +6,163 @@
     <title>Cyberpunk - WonderLands</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: #050505;
-            color: white;
-            font-family: 'Arial', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
+            background-color: #050505;
+            background-image: radial-gradient(circle at center, rgba(0, 30, 30, 0.8) 0%, rgba(5, 5, 5, 0.95) 100%), url('cyber.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #d4cfc5;
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 4rem;
-            color: #fff;
-            text-shadow: 0 0 10px #0fa, 0 0 20px #0fa;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        .notice {
-            font-size: 1.5rem;
-            color: #0fa;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            animation: neon 1.5s infinite alternate;
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #005555; border: 1px solid #0fa; }
+        ::-webkit-scrollbar-thumb:hover { background: #0fa; }
+
+        .magic-runes {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;
         }
-        @keyframes neon {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #0fa, 0 0 15px #0fa; opacity: 1; }
-            20%, 24%, 55% { text-shadow: none; opacity: 0.7; }
+        
+        .floating-rune {
+            position: absolute; color: rgba(0, 255, 170, 0.5); 
+            text-shadow: 0 0 10px #0fa;
+            animation: matrix-fall infinite linear; opacity: 0; user-select: none;
+            font-family: monospace; font-weight: bold;
         }
-        .btn-back {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: white;
-            border: 2px solid #0fa;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            border-radius: 4px;
+
+        .floating-rune:nth-child(1) { left: 10%; font-size: 1.5rem; animation-duration: 8s; animation-delay: 0s; }
+        .floating-rune:nth-child(2) { left: 85%; font-size: 2rem; animation-duration: 12s; animation-delay: -3s; }
+        .floating-rune:nth-child(3) { left: 45%; font-size: 1.2rem; animation-duration: 7s; animation-delay: -1s; }
+        .floating-rune:nth-child(4) { left: 30%; font-size: 2.5rem; animation-duration: 15s; animation-delay: -6s; color: rgba(255, 0, 150, 0.4); }
+        .floating-rune:nth-child(5) { left: 75%; font-size: 1.8rem; animation-duration: 10s; animation-delay: -4s; }
+
+        @keyframes matrix-fall {
+            0% { transform: translateY(-10vh); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh); opacity: 0; }
         }
-        .btn-back:hover {
-            background: #0fa;
-            color: black;
-            box-shadow: 0 0 20px #0fa;
+
+        header { position: relative; text-align: center; padding: 100px 20px 40px; z-index: 2; }
+
+        .stewie-notice {
+            position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
+            color: #0fa; font-size: 1rem; letter-spacing: 5px; text-transform: uppercase;
+            animation: neon-flicker 2s infinite alternate;
+        }
+
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #0fa, 0 0 10px #0fa; opacity: 1; }
+            20%, 24%, 55% { text-shadow: none; opacity: 0.5; }
+        }
+
+        h1 {
+            font-size: 6rem; color: #ffffff; text-shadow: 0 0 10px #0fa, 0 0 20px #0fa, 0 0 40px #008888;
+            letter-spacing: 12px; text-transform: uppercase; margin-bottom: 20px;
+        }
+
+        .grimoire-container {
+            position: relative; max-width: 1200px; margin: 0 auto 50px; padding: 50px 80px;
+            background: rgba(0, 10, 10, 0.85); border: 1px solid #0fa;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.9), 0 0 20px rgba(0, 255, 170, 0.2);
+            z-index: 2; display: grid; grid-template-columns: 2fr 1fr; gap: 50px;
+        }
+
+        .runic-border {
+            position: absolute; top: 20px; bottom: 20px; width: 40px;
+            display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+            font-family: monospace; font-size: 1.2rem; color: #005555; user-select: none;
+        }
+        .runic-left { left: 10px; }
+        .runic-right { right: 10px; }
+
+        .lore-section h2 { color: #fff; font-size: 2.5rem; margin-bottom: 30px; text-align: center; text-shadow: 0 0 10px #0fa; }
+        .lore-section h2::after { content: 'SYS.LOG // UPLOADING'; display: block; font-size: 1rem; color: #0fa; margin-top: 10px; letter-spacing: 10px; }
+
+        .lore-text { font-size: 1.2rem; line-height: 1.9; text-align: justify; }
+        .lore-text p:first-of-type::first-letter {
+            float: left; font-size: 5rem; line-height: 0.8; padding-right: 15px; padding-top: 5px;
+            color: #0fa; text-shadow: 0 0 15px #0fa;
+        }
+        .lore-text p { margin-bottom: 25px; }
+
+        .info-section { display: flex; flex-direction: column; gap: 30px; padding-top: 20px; }
+        .crystal-card {
+            position: relative; background: linear-gradient(135deg, #001a1a 0%, #000 100%);
+            padding: 25px 20px 25px 60px; border: 1px solid #005555; transition: 0.4s;
+        }
+        .crystal-card:hover { border-color: #0fa; box-shadow: inset 0 0 15px rgba(0, 255, 170, 0.2); transform: translateX(-5px); }
+        .crystal-card::before {
+            content: '/>'; position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+            font-weight: bold; font-size: 1.5rem; color: #0fa;
+        }
+        .crystal-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
+        .crystal-card p { font-size: 0.95rem; color: #88a; }
+
+        .portal-btn-container { text-align: center; padding-bottom: 80px; z-index: 2; position: relative; }
+        .btn-portal {
+            display: inline-block; padding: 15px 50px; background: transparent; color: #fff;
+            font-size: 1.5rem; text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
+            border: 2px solid #0fa; transition: 0.4s; box-shadow: 0 0 10px rgba(0, 255, 170, 0.2);
+        }
+        .btn-portal:hover { background: rgba(0, 255, 170, 0.2); box-shadow: 0 0 20px #0fa, inset 0 0 10px #0fa; }
+
+        @media (max-width: 960px) {
+            h1 { font-size: 3.5rem; }
+            .grimoire-container { grid-template-columns: 1fr; padding: 30px 20px; }
+            .runic-border { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Cyberpunk</h1>
-    <p class="notice">na tom se pracuje Stewie</p>
-    <a href="index.html" class="btn-back">⬅ Zpět na výběr</a>
+    <div class="magic-runes">
+        <div class="floating-rune">010</div><div class="floating-rune">1</div>
+        <div class="floating-rune">00</div><div class="floating-rune">101</div>
+        <div class="floating-rune">ERR</div>
+    </div>
+
+    <header>
+        <div class="stewie-notice">~ Systém se kompiluje, Stewie ~</div>
+        <h1>Cyberpunk</h1>
+    </header>
+
+    <main class="grimoire-container">
+        <div class="runic-border runic-left">
+            <span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span>
+        </div>
+        <div class="runic-border runic-right">
+            <span>1</span><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span>
+        </div>
+        
+        <section class="lore-section">
+            <h2>Sektor Offline</h2>
+            <div class="lore-text">
+                <p>Tento server je momentálně odpojen od hlavní sítě. Korporátní droni právě staví nové neonové mrakodrapy, překupníci ladí kybernetické implantáty a hackeři píšou kód pro nová pravidla ulice.</p>
+                <p>Systém vyžaduje masivní update. Zůstaňte připojeni k síti, budeme vás informovat hned, jakmile proběhne reboot a brány Night City se opět otevřou.</p>
+            </div>
+        </section>
+
+        <aside class="info-section">
+            <div class="crystal-card">
+                <h3>System Status</h3>
+                <p>OFFLINE (Probíhá kódování loru)</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="portal-btn-container">
+        <a href="index.html" class="btn-portal">Odpojit / Zpět</a>
+    </div>
 
 </body>
 </html>

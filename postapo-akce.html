@@ -7,65 +7,166 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: #050505;
-            color: white;
+            background-color: #050505;
+            background-image: radial-gradient(circle at center, rgba(40, 15, 0, 0.7) 0%, rgba(5, 5, 5, 0.95) 100%), url('postapo.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #d4cfc5;
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+            overflow-x: hidden;
         }
-        h1 {
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0500; }
+        ::-webkit-scrollbar-thumb { background: #cd4606; border-radius: 5px; border: 1px solid #ffae34; }
+        ::-webkit-scrollbar-thumb:hover { background: #ec760c; }
+
+        .magic-runes {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        
+        .floating-rune {
+            position: absolute; color: rgba(255, 174, 52, 0.4); 
+            text-shadow: 0 0 10px #ec760c, 0 0 20px #cd4606;
+            animation: float-ash infinite linear; opacity: 0; user-select: none;
             font-family: 'Stardos Stencil', system-ui;
-            font-size: 4rem;
-            color: #fff;
-            text-shadow: 0 0 10px #ffae34, 0 0 20px #ec760c;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
         }
-        .notice {
-            font-size: 1.5rem;
-            color: #ffae34;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
+
+        .floating-rune:nth-child(1) { left: 15%; font-size: 2rem; animation-duration: 12s; animation-delay: 0s; }
+        .floating-rune:nth-child(2) { left: 80%; font-size: 3rem; animation-duration: 18s; animation-delay: -3s; }
+        .floating-rune:nth-child(3) { left: 50%; font-size: 1.5rem; animation-duration: 10s; animation-delay: -5s; }
+        .floating-rune:nth-child(4) { left: 25%; font-size: 4rem; animation-duration: 22s; animation-delay: -8s; color: rgba(255, 50, 0, 0.3); }
+        .floating-rune:nth-child(5) { left: 70%; font-size: 2.5rem; animation-duration: 15s; animation-delay: -2s; }
+
+        @keyframes float-ash {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) rotate(180deg); opacity: 0; }
+        }
+
+        header { position: relative; text-align: center; padding: 100px 20px 40px; z-index: 2; }
+
+        .stewie-notice {
+            position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
+            color: #ffae34; font-family: 'Stardos Stencil', system-ui; font-size: 1.2rem;
+            letter-spacing: 5px; text-transform: uppercase; text-shadow: 0 0 10px #ec760c;
             animation: flicker 0.15s infinite alternate;
         }
-        @keyframes flicker {
-            0% { text-shadow: 0 0 4px #ec760c; }
-            100% { text-shadow: 0 0 12px #ffae34; }
+
+        @keyframes flicker { 0% { opacity: 0.8; } 100% { opacity: 1; text-shadow: 0 0 15px #ffae34; } }
+
+        h1 {
+            font-family: 'Stardos Stencil', system-ui; font-size: 6rem; color: #ffffff;
+            text-shadow: 0 0 15px #cd4606, 0 0 30px #ec760c, 0 0 60px #ffae34;
+            letter-spacing: 12px; text-transform: uppercase; margin-bottom: 20px;
         }
-        .btn-back {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: white;
-            border: 2px solid #ec760c;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            border-radius: 4px;
+
+        .grimoire-container {
+            position: relative; max-width: 1200px; margin: 0 auto 50px; padding: 50px 80px;
+            background: rgba(20, 10, 0, 0.85); border: 2px solid #ec760c;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.9), 0 0 30px rgba(236, 118, 12, 0.4);
+            z-index: 2; display: grid; grid-template-columns: 2fr 1fr; gap: 50px;
         }
-        .btn-back:hover {
-            background: #ec760c;
-            box-shadow: 0 0 20px #cd4606;
+
+        /* Varovné pruhy na krajích */
+        .runic-border {
+            position: absolute; top: 0; bottom: 0; width: 30px;
+            background: repeating-linear-gradient(45deg, #111, #111 15px, #ec760c 15px, #ec760c 30px);
+            opacity: 0.6;
+        }
+        .runic-left { left: 0; border-right: 2px solid #ec760c; }
+        .runic-right { right: 0; border-left: 2px solid #ec760c; }
+
+        .lore-section h2 {
+            font-family: 'Stardos Stencil', system-ui; color: #ffae34; font-size: 2.5rem;
+            margin-bottom: 30px; text-align: center; letter-spacing: 3px;
+        }
+
+        .lore-section h2::after {
+            content: '--- ZÁZNAM Z PUSTINY ---'; display: block; font-size: 1rem; color: #cd4606;
+            margin-top: 10px; letter-spacing: 5px;
+        }
+
+        .lore-text { font-size: 1.2rem; line-height: 1.9; text-align: justify; }
+        .lore-text p:first-of-type::first-letter {
+            font-family: 'Stardos Stencil', system-ui; float: left; font-size: 5rem; line-height: 0.8;
+            padding-right: 15px; padding-top: 5px; color: #ffae34; text-shadow: 2px 2px 5px #000;
+        }
+        .lore-text p { margin-bottom: 25px; }
+
+        .info-section { display: flex; flex-direction: column; gap: 30px; padding-top: 20px; }
+        .crystal-card {
+            position: relative; background: linear-gradient(135deg, #2a1100 0%, #0a0500 100%);
+            padding: 25px 20px 25px 60px; border: 1px solid #cd4606;
+            border-left: 5px solid #ffae34; transition: 0.4s;
+        }
+        .crystal-card:hover { transform: translateX(-5px); box-shadow: 0 0 20px rgba(236, 118, 12, 0.3); }
+        .crystal-card::before {
+            content: '☢'; position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+            font-size: 1.8rem; color: #ffae34; text-shadow: 0 0 10px #ffae34;
+        }
+        .crystal-card h3 { font-family: 'Stardos Stencil', system-ui; color: #ffae34; font-size: 1.3rem; margin-bottom: 5px; }
+        .crystal-card p { font-size: 0.95rem; color: #aaa; }
+
+        .portal-btn-container { text-align: center; padding-bottom: 80px; z-index: 2; position: relative; }
+        .btn-portal {
+            display: inline-block; padding: 15px 50px; background: transparent; color: #ffae34;
+            font-family: 'Stardos Stencil', system-ui; font-size: 1.5rem; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 4px; border: 2px solid #cd4606; transition: 0.4s;
+        }
+        .btn-portal:hover { background: #cd4606; box-shadow: 0 0 30px #ec760c; color: #fff; border-color: #ffae34; }
+
+        @media (max-width: 960px) {
+            h1 { font-size: 3.5rem; }
+            .grimoire-container { grid-template-columns: 1fr; padding: 30px 20px; border: none; }
+            .runic-border { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Postapo</h1>
-    <p class="notice">na tom se pracuje Stewie</p>
-    <a href="index.html" class="btn-back">⬅ Zpět na výběr</a>
+    <div class="magic-runes">
+        <div class="floating-rune">☢</div><div class="floating-rune">🔥</div>
+        <div class="floating-rune">☢</div><div class="floating-rune">☣</div>
+        <div class="floating-rune">🔥</div>
+    </div>
+
+    <header>
+        <div class="stewie-notice">~ Stavíme Bunkr, Stewie ~</div>
+        <h1>Postapo</h1>
+    </header>
+
+    <main class="grimoire-container">
+        <div class="runic-border runic-left"></div>
+        <div class="runic-border runic-right"></div>
+        
+        <section class="lore-section">
+            <h2>Pustina Volá</h2>
+            <div class="lore-text">
+                <p>Zóna je momentálně vysoce zamořená. Naši technici právě čistí filtry, shánějí zbraně z dob před válkou a budují nové opevnění z vraků aut. Svět se sice zhroutil, ale naše práce na něm teprve začíná.</p>
+                <p>Nasazujeme masky a mapujeme terén. Jakmile klesne úroveň radiace a pravidla přežití budou jasně stanovena, vyšleme signál do pustiny. Zůstaňte na příjmu!</p>
+            </div>
+        </section>
+
+        <aside class="info-section">
+            <div class="crystal-card">
+                <h3>Stav Sektoru</h3>
+                <p>Zamořeno (Rekonstrukce loru a lokací)</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="portal-btn-container">
+        <a href="index.html" class="btn-portal">Zpět k Portálům</a>
+    </div>
 
 </body>
 </html>
