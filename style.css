@@ -158,7 +158,7 @@ body, html {
    STAVEBNÍ PÁSKA (V REKONSTRUKCI)
    ========================================== */
 .portal.under-construction::before {
-    /* Ztmaví a mírně odbarví obrázek na pozadí */
+    /* Ztmaví a mírně odbarví obrázek na pozadí natrvalo */
     filter: brightness(0.35) grayscale(0.7);
 }
 
@@ -176,13 +176,24 @@ body, html {
     font-weight: 900;
     text-align: center;
     padding: 10px 0;
-    /* Narovná text vůči zkosenému portálu a nakloní ho */
-    transform: skewX(15deg) rotate(-20deg);
+    
+    /* Narovná text vůči zkosenému portálu, nakloní ho a mírně zmenší pro animaci */
+    transform: skewX(15deg) rotate(-20deg) scale(0.8);
     z-index: 10;
     box-shadow: 0 5px 15px rgba(0,0,0,0.8);
     letter-spacing: 3px;
     text-shadow: 2px 2px 0px #000, -1px -1px 0px #000;
     pointer-events: none; /* Aby šlo přes pásku na portál kliknout */
+    
+    /* SKRYTÍ PÁSKY VE VÝCHOZÍM STAVU */
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Plynulá pružná animace zobrazení */
+}
+
+/* ZOBRAZENÍ PÁSKY PO NAJETÍ MYŠÍ */
+.portal.under-construction:hover::after {
+    opacity: 1;
+    transform: skewX(15deg) rotate(-20deg) scale(1);
 }
 
 /* ==========================================
